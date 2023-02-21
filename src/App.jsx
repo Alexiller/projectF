@@ -1,15 +1,12 @@
-import Footer from "./Layout/Footer"
-import Header from "./Layout/Header"
-import Navbar from "./Layout/Navbar"
+import MainLayout from "./Layout/MainLayout"
+
 
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Navbar />
-      <Footer/>
+      <MainLayout />
     </>
   )
 }
