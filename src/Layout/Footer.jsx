@@ -1,8 +1,12 @@
+import { Center, Text } from '@chakra-ui/react'
 import React from 'react'
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <Center>
+      <Text>Made by Alex.D</Text>
+
+    </Center>
   )
 }
 
