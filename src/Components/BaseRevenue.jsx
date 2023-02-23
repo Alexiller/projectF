@@ -1,19 +1,19 @@
-import { MoonIcon } from '@chakra-ui/icons'
-import { Progress, Stat, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/react'
 import React from 'react'
+import { Center, Progress, Stat, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/react'
 
-function BaseRevenue() {
+export default function BaseRevenue() {
+
+    const salary = 2000;
+    const budgetRemaining = (salary - 1000);
+    const remainingPercentage = 60;
   return (
     <Stat>
-          <StatLabel fontSize={40}>Argent restant</StatLabel>
-          <StatNumber fontSize={30}>1580
-            <StatHelpText>
-              Budget utilisé = 23.85%
-            </StatHelpText>
-          </StatNumber>
-          <Progress colorScheme='green' h="20" borderRadius={'md'} value={50} hasStripe isAnimated/>
-        </Stat>
+      <StatLabel fontSize={20}>Global</StatLabel>
+            <StatNumber fontSize='4xl'>{985}€</StatNumber>
+      <StatHelpText textAlign={'right'}>
+        Budget utilisé à {remainingPercentage}%
+      </StatHelpText>
+      <Progress colorScheme='green' h="20" borderRadius={'md'} value={remainingPercentage} hasStripe isAnimated/>
+    </Stat>
   )
 }
-
-export default BaseRevenue
