@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Progress, Stat, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/react'
+import { Center, Heading, Progress, Stat, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/react'
 
 export default function BaseRevenue() {
 
@@ -8,7 +8,7 @@ export default function BaseRevenue() {
     const remainingPercentage = 60;
   return (
     <Stat>
-      <StatLabel fontSize={20}>Global</StatLabel>
+      <Heading fontSize={20}>Global</Heading>
       
             <Center><StatNumber fontSize='4xl'>{985}€</StatNumber></Center>
       <StatHelpText textAlign={'right'}>

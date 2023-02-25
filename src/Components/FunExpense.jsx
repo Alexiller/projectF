@@ -1,10 +1,14 @@
 import React from 'react'
-import { Progress, Stat, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/react'
+import { Heading, HStack, Progress, Stat, StatHelpText} from '@chakra-ui/react'
+import ModalFunExpense from './ModalFunExpense'
 
 export default function FunExpense() {
   return (
     <Stat>
-    <StatLabel fontSize={20}>Loisir</StatLabel>
+    <HStack justifyContent={'space-between'}>
+      <Heading fontSize={20}>Loisir</Heading>
+      <ModalFunExpense/>
+    </HStack>
     <StatHelpText textAlign={'right'}>
     Budget restant à utiliser 999 €
     </StatHelpText>

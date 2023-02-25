@@ -1,11 +1,15 @@
 import React from 'react'
-import { Center, List, ListItem, Stat, StatLabel, StatNumber, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react'
+import { Center, Heading, HStack, Stat, StatNumber } from '@chakra-ui/react'
+import { EditIcon } from '@chakra-ui/icons'
 
 export default function RequiredExpense() {
   return (
     <>
     <Stat>
-        <StatLabel fontSize={20}>Obligatoire</StatLabel>
+    <HStack justifyContent={'space-between'}>
+      <Heading fontSize={20}>Obligatoire</Heading>
+      <EditIcon boxSize={'5'}/>
+    </HStack>
         <Center>
             <StatNumber fontSize='6xl'>{985}€</StatNumber>
         </Center>
