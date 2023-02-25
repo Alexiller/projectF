@@ -9,7 +9,8 @@ export default function BaseRevenue() {
   return (
     <Stat>
       <StatLabel fontSize={20}>Global</StatLabel>
-            <StatNumber fontSize='4xl'>{985}€</StatNumber>
+      
+            <Center><StatNumber fontSize='4xl'>{985}€</StatNumber></Center>
       <StatHelpText textAlign={'right'}>
         Budget utilisé à {remainingPercentage}%
       </StatHelpText>

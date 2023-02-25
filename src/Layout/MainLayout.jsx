@@ -6,6 +6,7 @@ import BaseRevenue from '../Components/BaseRevenue'
 import FunExpense from '../Components/FunExpense'
 import RequiredExpense from '../Components/RequiredExpense'
 import InvestmentExpense from '../Components/InvestmentExpense'
+import MonthSelect from '../Components/MonthSelect'
 
 function MainLayout() {
   return (
@@ -27,7 +28,7 @@ function MainLayout() {
   <GridItem area={'main'}>
     <Grid templateColumns='repeat(8, 1fr)' gap={1}>
     <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='red.300'>
-         <Heading textAlign={'center'} fontSize="50" color={'white'}>Février 2023</Heading>
+         <MonthSelect/>
       </GridItem>
       <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='purple.200'>
          <BaseRevenue/>
