@@ -1,6 +1,6 @@
 import React from 'react'
 import { Heading, HStack, Progress, Stat, StatHelpText} from '@chakra-ui/react'
-import ModalFunExpense from './ModalFunExpense'
+import ModalFunExpense from './Modal/ModalFunExpense'
 
 export default function FunExpense() {
   return (

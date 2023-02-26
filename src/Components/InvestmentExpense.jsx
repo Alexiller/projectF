@@ -1,26 +1,22 @@
-import { CheckIcon } from '@chakra-ui/icons'
-import { Center, Heading, Input, InputGroup, InputLeftElement, InputRightElement, StatNumber, Text } from '@chakra-ui/react'
+import { Center, Heading, HStack, Input, InputGroup, InputLeftElement, InputRightElement, Stat, StatNumber, Text } from '@chakra-ui/react'
 import React from 'react'
+import ModalInvestmentExpense from './Modal/ModalInvestmentExpense'
 
 
 export default function InvestmentExpense() {
   return (
     <>
-    <Heading fontSize={20}>Investissement</Heading>
-    <Center>
-            <Text fontSize='6xl'>{}€</Text>
+    <Stat>
+    <HStack justifyContent={'space-between'} pb="2">
+      <Heading fontSize={20}>Investissement</Heading>
+      <ModalInvestmentExpense/>
+    </HStack>
+        <Center>
+            <StatNumber fontSize='6xl'>{985}€</StatNumber>
         </Center>
+    </Stat>
 
-    <InputGroup bg="white">
-    <InputLeftElement
-      pointerEvents='none'
-      color='gray.300'
-      fontSize='1.2em'
-      children='€'
-    />
-    <Input placeholder='Enter monthly amount' />
-    <InputRightElement children={<CheckIcon color='green.500' />} />
-  </InputGroup>
+
   </>
   )
 }

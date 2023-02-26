@@ -25,26 +25,16 @@ export default function ModalFunExpense() {
                     </Thead>
                     <Tbody>
                     <Tr>
-                        <Td>inches</Td>
-                        <Td>millimetres (mm)</Td>
-                        <Td isNumeric>25.4</Td>
+                        <Td>Alimentation</Td>
+                        <Td>Auchan (mm)</Td>
+                        <Td isNumeric>20€</Td>
                     </Tr>
                     <Tr>
-                        <Td>feet</Td>
-                        <Td>centimetres (cm)</Td>
-                        <Td isNumeric>30.48</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>yards</Td>
-                        <Td>metres (m)</Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td>Santé</Td>
+                        <Td>Pharmacie</Td>
+                        <Td isNumeric>15.50€</Td>
                     </Tr>
                     </Tbody>
-                    <Tfoot  >
-                    <Tr>
-                        <Th coldSpan="2" align='center'>To convert</Th>
-                    </Tr>
-                    </Tfoot>
                 </Table>
                 </TableContainer>
             </ModalBody>
