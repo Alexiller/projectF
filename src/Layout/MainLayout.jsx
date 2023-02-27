@@ -2,11 +2,8 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { Grid, GridItem, Heading, Text } from '@chakra-ui/react'
-import BaseRevenue from '../Components/BaseRevenue'
-import FunExpense from '../Components/FunExpense'
-import RequiredExpense from '../Components/RequiredExpense'
-import InvestmentExpense from '../Components/InvestmentExpense'
 import MonthSelect from '../Components/MonthSelect'
+import BudgetCard from '../Components/BudgetCard'
 
 function MainLayout() {
   return (
@@ -28,19 +25,19 @@ function MainLayout() {
   <GridItem area={'main'}>
     <Grid templateColumns='repeat(8, 1fr)' gap={1}>
     <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='red.300'>
-         <MonthSelect/>
+         <MonthSelect month={'Février'} year={'2023'}/>
       </GridItem>
       <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='purple.200'>
-         <BaseRevenue/>
+         <BudgetCard name="Global" currentAmount={'400'} max={'1000'} displayProgressBar={true}></BudgetCard>
       </GridItem>
       <GridItem colStart="2" colSpan="2"  borderRadius="xl" p="3" bg='blue.200'>
-        <InvestmentExpense/>
+        <BudgetCard name="Investissement" currentAmount={'1000'} max={'1000'} displayCurrentAmount={true}></BudgetCard>
       </GridItem>
       <GridItem colSpan="2"  borderRadius="xl" p="3" bg='orange.200'>
-        <RequiredExpense/>
+        <BudgetCard name="Obligatoire" currentAmount={'400'} max={'1000'} displayCurrentAmount={true}></BudgetCard>
       </GridItem>
       <GridItem colSpan="2"  borderRadius="xl" p="3" bg='green.200'>
-        <FunExpense/>
+        <BudgetCard name="Loisir" currentAmount={'400'} max={'1000'} displayProgressBar={true} displayCurrentAmount={false}></BudgetCard>
       </GridItem>
      </Grid>
   </GridItem>

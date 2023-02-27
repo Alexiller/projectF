@@ -2,7 +2,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Button, Center, Flex, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
 
-export default function MonthSelect() {
+export default function MonthSelect( {month, year}) {
   return (
     <Flex justifyContent="space-between" color="white">
         <Center>
@@ -10,7 +10,7 @@ export default function MonthSelect() {
                 <ChevronLeftIcon boxSize={12}/>
             </Button>
         </Center>
-        <Heading textAlign={'center'} fontSize="50">Février 2023</Heading>
+        <Heading textAlign={'center'} fontSize="50">{month} {year}</Heading>
         <Center>
         <Button colorScheme='white' size='lg'>
             <ChevronRightIcon boxSize={12}/>
