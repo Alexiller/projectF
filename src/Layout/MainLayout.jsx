@@ -25,7 +25,7 @@ function MainLayout() {
   <GridItem area={'main'}>
     <Grid templateColumns='repeat(8, 1fr)' gap={1}>
     <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='red.300'>
-         <MonthSelect month={'Février'} year={'2023'}/>
+         <MonthSelect />
       </GridItem>
       <GridItem colSpan="4" colStart="2" colEnd="8" borderRadius="xl" p="3" bg='purple.200'>
          <BudgetCard name="Global" currentAmount={'400'} max={'1000'} displayProgressBar={true}></BudgetCard>

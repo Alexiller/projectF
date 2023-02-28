@@ -4,6 +4,7 @@ import React from 'react'
 
 export default function ModalManageAmount({name}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
       <>
         <EditIcon boxSize={'5'} onClick={onOpen}/>
@@ -27,7 +28,7 @@ export default function ModalManageAmount({name}) {
                         <Tr>
                             <Td>---</Td>
                             <Td>--</Td>
-                            <Td isNumeric>99€</Td>
+                            <Td isNumeric>--€</Td>
                         </Tr>
                       </Tbody>
                   </Table>
