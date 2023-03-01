@@ -1,5 +1,5 @@
 import { Center, Heading, HStack, Progress, Stat, StatHelpText, StatNumber } from '@chakra-ui/react'
-import { currencyFormatter } from './Utils/utils'
+import { currencyFormatter } from '../Utils/utils'
 import React from 'react'
 import ModalManageAmount from './Modal/ModalManageAmount';
 

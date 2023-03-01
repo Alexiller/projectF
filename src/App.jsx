@@ -1,3 +1,4 @@
+import { BudgetsProvider } from "./Context/BudgetContext"
 import MainLayout from "./Layout/MainLayout"
 
 
@@ -6,7 +7,9 @@ function App() {
 
   return (
     <>
-      <MainLayout />
+      <BudgetsProvider>
+        <MainLayout />
+      </BudgetsProvider>
     </>
   )
 }
