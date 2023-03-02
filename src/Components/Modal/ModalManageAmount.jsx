@@ -1,9 +1,34 @@
 import { EditIcon } from '@chakra-ui/icons'
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
 
 export default function ModalManageAmount({name}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const expensesList = [
+      {
+        id: 1,
+        category: "Alimentation",
+        name: "Auchan",
+        amount: 85,
+      },
+      {
+        id: 2,
+        category: "Santé",
+        name: "Pharmacie",
+        amount: 20,
+      },
+      {
+        id: 3,
+        category: "Loisir",
+        name: "Jeux",
+        amount: 35,
+      }
+
+
+
+
+    ]
 
     return (
       <>
@@ -18,24 +43,46 @@ export default function ModalManageAmount({name}) {
                 <TableContainer>
                   <Table variant='simple'>
                       <Thead>
-                        <Tr>
+                        <Tr textAlign={'center'}>
                             <Th>Catégorie</Th>
                             <Th>Intitulé</Th>
-                            <Th isNumeric>Montant</Th>
+                            <Th>Montant</Th>
                         </Tr>
                       </Thead>
                       <Tbody>
                         <Tr>
-                            <Td>---</Td>
-                            <Td>--</Td>
-                            <Td isNumeric>--€</Td>
+                            <Td>
+                              <FormControl isRequired>
+                                <Input placeholder='Catégorie' defaultValue="Alimentation"/>
+                              </FormControl>
+                            </Td>
+                            <Td>
+                              <FormControl isRequired >
+                                <Input placeholder='Intitulé' />
+                              </FormControl>
+                            </Td>
+                            <Td isNumeric>
+                              <FormControl>
+                                <NumberInput>
+                                  <NumberInputField />
+                                  <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                  </NumberInputStepper>
+                                </NumberInput>
+                              </FormControl>
+                            </Td>
+                            <Td></Td>
+                            <Td textAlign={'right'}>
+                                <Button mx='2'>✏️</Button>
+                                <Button>❌</Button>
+                            </Td>
                         </Tr>
                       </Tbody>
                   </Table>
                 </TableContainer>
             </ModalBody>
             <ModalFooter>
-              <Button colorScheme='green' mx="5">Add</Button>
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
