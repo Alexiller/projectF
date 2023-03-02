@@ -8,21 +8,19 @@ export default function MonthSelect() {
 
 let yearValue = new Date().getFullYear();
 let monthValue = new Date().getMonth()+1;
-let monthName = getMonthName(monthValue);
 
-
-
-const [month, setMonth] = useState(5);
+const [month, setMonth] = useState(monthValue);
 
 const decreaseMonth = () => {
-  setMonth((month) => {
-    console.log(month);
-    return (getMonthName(month - 1));
-    
-    
-    
-  });
+  setMonth((month) => month - 1);
 }
+
+const increaseMonth = () => {
+  setMonth((month) => month + 1);
+}
+
+const MonthName = getMonthName(month);
+console.log(month);
 
   return (
     <Flex justifyContent="space-between" color="white">
@@ -31,10 +29,10 @@ const decreaseMonth = () => {
                 <ChevronLeftIcon boxSize={12}/>
             </Button>
         </Center>
-        <Heading textAlign={'center'} fontSize="50"> {month} {yearValue}</Heading>
+        <Heading textAlign={'center'} fontSize="50"> {MonthName} {yearValue}</Heading>
         <Center>
         <Button colorScheme='white' size='lg'>
-            <ChevronRightIcon boxSize={12}/>
+            <ChevronRightIcon onClick={increaseMonth} boxSize={12}/>
         </Button>
         </Center>
     </Flex>
