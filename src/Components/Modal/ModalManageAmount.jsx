@@ -1,6 +1,6 @@
 import { EditIcon } from '@chakra-ui/icons'
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useBoolean, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import EditListAmount from './EditListAmount'
 import ShowListAmount from './ShowListAmount'
 
@@ -27,11 +27,9 @@ export default function ModalManageAmount({name}) {
         name: "Jeux",
         amount: 35,
       }
-
-
-
-
     ]
+
+    const [expenses, setExpenses] = useState({expensesLists});
 
     return (
       <>
@@ -45,17 +43,20 @@ export default function ModalManageAmount({name}) {
             <ModalCloseButton />
             <ModalBody>
               {edit ?
-              <EditListAmount/>
-              : <ShowListAmount/>
-            
-            
+              <EditListAmount expensesLists={expensesLists}/>
+              : <ShowListAmount expensesLists={expensesLists} />
             }
-
             </ModalBody>
             <ModalFooter>
-            <Button colorScheme='yellow' mr={3} onClick={setEdit.toggle}>
-                Edit
+            {edit ?
+            <Button colorScheme='green' mr={3} onClick={setEdit.toggle}>
+                 Valider
+              </Button> : 
+              <Button colorScheme='yellow' mr={3} onClick={setEdit.toggle}>
+              Edit
               </Button>
+
+}
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
