@@ -1,11 +1,14 @@
 import { EditIcon } from '@chakra-ui/icons'
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Stack, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, useBoolean, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
+import EditListAmount from './EditListAmount'
+import ShowListAmount from './ShowListAmount'
 
 export default function ModalManageAmount({name}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [edit, setEdit] = useBoolean()
 
-    const expensesList = [
+    const expensesLists = [
       {
         id: 1,
         category: "Alimentation",
@@ -34,55 +37,25 @@ export default function ModalManageAmount({name}) {
       <>
         <EditIcon boxSize={'5'} onClick={onOpen}/>
   
+
         <Modal isOpen={isOpen} onClose={onClose} size="4xl">
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Dépenses {name}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                <TableContainer>
-                  <Table variant='simple'>
-                      <Thead>
-                        <Tr textAlign={'center'}>
-                            <Th>Catégorie</Th>
-                            <Th>Intitulé</Th>
-                            <Th>Montant</Th>
-                        </Tr>
-                      </Thead>
-                      <Tbody>
-                        <Tr>
-                            <Td>
-                              <FormControl isRequired>
-                                <Input placeholder='Catégorie' defaultValue="Alimentation"/>
-                              </FormControl>
-                            </Td>
-                            <Td>
-                              <FormControl isRequired >
-                                <Input placeholder='Intitulé' />
-                              </FormControl>
-                            </Td>
-                            <Td isNumeric>
-                              <FormControl>
-                                <NumberInput>
-                                  <NumberInputField />
-                                  <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                  </NumberInputStepper>
-                                </NumberInput>
-                              </FormControl>
-                            </Td>
-                            <Td></Td>
-                            <Td textAlign={'right'}>
-                                <Button mx='2'>✏️</Button>
-                                <Button>❌</Button>
-                            </Td>
-                        </Tr>
-                      </Tbody>
-                  </Table>
-                </TableContainer>
+              {edit ?
+              <EditListAmount/>
+              : <ShowListAmount/>
+            
+            
+            }
+
             </ModalBody>
             <ModalFooter>
+            <Button colorScheme='yellow' mr={3} onClick={setEdit.toggle}>
+                Edit
+              </Button>
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>

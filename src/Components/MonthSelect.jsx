@@ -10,6 +10,7 @@ let yearValue = new Date().getFullYear();
 let monthValue = new Date().getMonth()+1;
 
 const [month, setMonth] = useState(monthValue);
+const [year, setYear] = useState(yearValue);
 
 const decreaseMonth = () => {
   setMonth((month) => month - 1);
