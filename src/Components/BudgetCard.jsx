@@ -5,6 +5,9 @@ import ModalManageAmount from './Modal/ModalManageAmount';
 
 export default function BudgetCard({name, currentAmount, max, displayCurrentAmount, displayProgressBar}) {
 
+
+
+    
 function getProgressBarVariant (currentAmount, max){
 const ratio = currentAmount / max;
 if (ratio < .5) return "green"

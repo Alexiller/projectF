@@ -6,7 +6,15 @@ import ShowListAmount from './ShowListAmount'
 
 export default function ModalManageAmount({name}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [edit, setEdit] = useBoolean()
+    const [isEditing, setIsEditing] = useState(false)
+
+
+    const handleToggle = () => setIsEditing(!isEditing)
+
+    const handleClick = (e) => {
+      console.log(e.target);
+
+    }
 
     const expensesLists = [
       {
@@ -29,7 +37,6 @@ export default function ModalManageAmount({name}) {
       }
     ]
 
-    const [expenses, setExpenses] = useState({expensesLists});
 
     return (
       <>
@@ -42,17 +49,17 @@ export default function ModalManageAmount({name}) {
             <ModalHeader>Dépenses {name}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              {edit ?
+              {isEditing ?
               <EditListAmount expensesLists={expensesLists}/>
               : <ShowListAmount expensesLists={expensesLists} />
             }
             </ModalBody>
             <ModalFooter>
-            {edit ?
-            <Button colorScheme='green' mr={3} onClick={setEdit.toggle}>
+            {isEditing ?
+            <Button colorScheme='green' mr={3} onClick={handleToggle}>
                  Valider
               </Button> : 
-              <Button colorScheme='yellow' mr={3} onClick={setEdit.toggle}>
+              <Button colorScheme='yellow' mr={3} onClick={handleToggle}>
               Edit
               </Button>
 

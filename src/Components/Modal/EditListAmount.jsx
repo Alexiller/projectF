@@ -1,8 +1,28 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import { Button, FormControl, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function EditListAmount({expensesLists}) {
+ 
+ 
+  const [expenses, setExpenses] = useState(expensesLists);
 
+
+  const handleDelete = (id) => {
+    setExpenses(prevExpenses => {
+      return prevExpenses.filter(expense => expense.id !== id)
+    })
+  }
+
+  const handleUpdate = () => {
+    setExpenses(prevExpenses => [...prevExpenses, {
+      id: expenses.length,
+      category: "",
+      name: "",
+      amount: null,
+  }])
+  }
+  
   
 
     return (
@@ -17,29 +37,32 @@ export default function EditListAmount({expensesLists}) {
                 </Tr>
               </Thead>
               <Tbody>
-       {expensesLists.map((expensesList) =>
+       {expenses.map((expense) =>
        <> 
               <Tr>
                 <Td>                              
                   <FormControl isRequired>
-                    <Input placeholder='Catégorie' defaultValue={expensesList.category}/>
+                    <Input placeholder='Catégorie' defaultValue={expense.category}/>
                   </FormControl>
                 </Td>
                 <Td>                  
                   <FormControl isRequired>
-                    <Input placeholder='Intitulé' defaultValue={expensesList.name}/>
+                    <Input placeholder='Intitulé' defaultValue={expense.name}/>
                   </FormControl>
                 </Td>
                 <Td>                  
                   <FormControl isRequired>
-                    <Input placeholder='Montant' defaultValue={expensesList.amount}/>
+                    <Input placeholder='Montant' defaultValue={expense.amount}/>
                   </FormControl>
-                  </Td>
+                </Td>
+                <Td>                  
+                 <DeleteIcon onClick={() => handleDelete(expense.id)}/>
+                </Td>
               </Tr>
                </>
             )}
                       </Tbody>
-                      <Button colorScheme='gray' textAlign={'right'} mr={3}>➕</Button>
+                      <Button onClick ={() => handleUpdate()}colorScheme='gray' textAlign={'right'} mr={3}>➕</Button>
                   </Table>
                 </TableContainer>
                 
