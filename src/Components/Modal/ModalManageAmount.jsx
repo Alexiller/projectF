@@ -41,8 +41,8 @@ export default function ModalManageAmount({ name }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setExpenses((prev) => [
-      ...prev,
+    setExpenses((prevExpenses) => [
+      ...prevExpenses,
       {
         [name]: value,
       },
