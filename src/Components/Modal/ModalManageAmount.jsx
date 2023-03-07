@@ -46,14 +46,17 @@ export default function ModalManageAmount({ name }) {
     ]);
   };
 
-  // const handleChange = (expenses) => {
-  //   const newExpenses = [expenses, ...newExpenses];
-  //   setExpenses(newExpenses);
-  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setExpenses((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsEditing(!isEditing);
+    setIsEditing((oldIsEditing) => !oldIsEditing);
   }
 
   console.log(expenses);
@@ -74,6 +77,7 @@ export default function ModalManageAmount({ name }) {
                 setExpenses={setExpenses}
                 handleAddItem={handleAddItem}
                 handleDelete={handleDelete}
+                handleChange={handleChange}
               />
             ) : (
               <ShowListAmount expensesLists={expenses} />

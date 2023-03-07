@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export default function ShowListAmount({ expensesLists, setExpenses }) {
+export default function ShowListAmount({ expensesLists }) {
   return (
     <>
       <TableContainer>
@@ -22,12 +22,12 @@ export default function ShowListAmount({ expensesLists, setExpenses }) {
             </Tr>
           </Thead>
           <Tbody>
-            {expensesLists.map((expensesList) => (
+            {expensesLists.map((expense) => (
               <>
                 <Tr>
-                  <Td>{expensesList.category}</Td>
-                  <Td>{expensesList.name}</Td>
-                  <Td>{expensesList.amount}</Td>
+                  <Td>{expense.category}</Td>
+                  <Td>{expense.name}</Td>
+                  <Td>{expense.amount}</Td>
                 </Tr>
               </>
             ))}

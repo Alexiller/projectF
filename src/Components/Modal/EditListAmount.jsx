@@ -17,9 +17,9 @@ import { CATEGORY_LIST } from "../../Utils/utils";
 
 export default function EditListAmount({
   expensesLists,
-  setExpenses,
   handleDelete,
   handleAddItem,
+  handleChange,
 }) {
   const categoryLists = CATEGORY_LIST.map((categoryList) => (
     <option value={categoryList.value}>{categoryList.label}</option>
@@ -43,8 +43,10 @@ export default function EditListAmount({
                   <Td>
                     <FormControl isRequired>
                       <Select
+                        name="category"
                         placeholder="Catégorie"
                         defaultValue={expense.category}
+                        onChange={handleChange}
                       >
                         {categoryLists}
                       </Select>
@@ -53,16 +55,20 @@ export default function EditListAmount({
                   <Td>
                     <FormControl isRequired>
                       <Input
+                        name="name"
                         placeholder="Intitulé"
                         defaultValue={expense.name}
+                        onChange={handleChange}
                       />
                     </FormControl>
                   </Td>
                   <Td>
                     <FormControl isRequired>
                       <Input
+                        name="montant"
                         placeholder="Montant"
                         defaultValue={expense.amount}
+                        onChange={handleChange}
                       />
                     </FormControl>
                   </Td>
