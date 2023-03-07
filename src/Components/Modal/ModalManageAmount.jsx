@@ -17,29 +17,46 @@ import ShowListAmount from "./ShowListAmount";
 export default function ModalManageAmount({ name }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
+  const [expenses, setExpenses] = useState([
+    {
+      id: Date.now(),
+      category: "",
+      name: "",
+      amount: null,
+    },
+  ]);
 
   const handleToggle = () => setIsEditing(!isEditing);
 
-  const expensesLists = [
-    {
-      id: 1,
-      category: "Alimentation",
-      name: "Auchan",
-      amount: 85,
-    },
-    {
-      id: 2,
-      category: "Santé",
-      name: "Pharmacie",
-      amount: 20,
-    },
-    {
-      id: 3,
-      category: "Loisir",
-      name: "Jeux",
-      amount: 35,
-    },
-  ];
+  const handleDelete = (id) => {
+    setExpenses((prevExpenses) => {
+      return prevExpenses.filter((expense) => expense.id !== id);
+    });
+  };
+
+  const handleAddItem = () => {
+    setExpenses((prevExpenses) => [
+      ...prevExpenses,
+      {
+        id: Date.now(),
+        category: "",
+        name: "",
+        amount: null,
+      },
+    ]);
+  };
+
+  // const handleChange = (expenses) => {
+  //   const newExpenses = [expenses, ...newExpenses];
+  //   setExpenses(newExpenses);
+  // };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsEditing(!isEditing);
+  }
+
+  console.log(expenses);
 
   return (
     <>
@@ -52,14 +69,19 @@ export default function ModalManageAmount({ name }) {
           <ModalCloseButton />
           <ModalBody>
             {isEditing ? (
-              <EditListAmount expensesLists={expensesLists} />
+              <EditListAmount
+                expensesLists={expenses}
+                setExpenses={setExpenses}
+                handleAddItem={handleAddItem}
+                handleDelete={handleDelete}
+              />
             ) : (
-              <ShowListAmount expensesLists={expensesLists} />
+              <ShowListAmount expensesLists={expenses} />
             )}
           </ModalBody>
           <ModalFooter>
             {isEditing ? (
-              <Button colorScheme="green" mr={3} onClick={handleToggle}>
+              <Button colorScheme="green" mr={3} onClick={handleSubmit}>
                 Valider
               </Button>
             ) : (

@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   Input,
+  Select,
   Table,
   TableContainer,
   Tbody,
@@ -11,28 +12,18 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
+import { CATEGORY_LIST } from "../../Utils/utils";
 
-export default function EditListAmount({ expensesLists }) {
-  const [expenses, setExpenses] = useState(expensesLists);
-
-  const handleDelete = (id) => {
-    setExpenses((prevExpenses) => {
-      return prevExpenses.filter((expense) => expense.id !== id);
-    });
-  };
-
-  const handleUpdate = () => {
-    setExpenses((prevExpenses) => [
-      ...prevExpenses,
-      {
-        id: expenses.length,
-        category: "",
-        name: "",
-        amount: null,
-      },
-    ]);
-  };
+export default function EditListAmount({
+  expensesLists,
+  setExpenses,
+  handleDelete,
+  handleAddItem,
+}) {
+  const categoryLists = CATEGORY_LIST.map((categoryList) => (
+    <option value={categoryList.value}>{categoryList.label}</option>
+  ));
 
   return (
     <>
@@ -46,15 +37,17 @@ export default function EditListAmount({ expensesLists }) {
             </Tr>
           </Thead>
           <Tbody>
-            {expenses.map((expense) => (
+            {expensesLists.map((expense) => (
               <>
                 <Tr>
                   <Td>
                     <FormControl isRequired>
-                      <Input
+                      <Select
                         placeholder="Catégorie"
                         defaultValue={expense.category}
-                      />
+                      >
+                        {categoryLists}
+                      </Select>
                     </FormControl>
                   </Td>
                   <Td>
@@ -81,7 +74,7 @@ export default function EditListAmount({ expensesLists }) {
             ))}
           </Tbody>
           <Button
-            onClick={() => handleUpdate()}
+            onClick={() => handleAddItem()}
             colorScheme="gray"
             textAlign={"right"}
             mr={3}

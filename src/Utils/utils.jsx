@@ -26,7 +26,8 @@ export const CATEGORY_LIST = [
   { value: "enfants", label: "Enfants" },
   { value: "impots", label: "Impôts" },
   { value: "transports", label: "Transports" },
-  { value: "RestaurationHotel", label: "Restauration / Hotel" },
+  { value: "restaurationHotel", label: "Restauration / Hotel" },
   { value: "service", label: "Service" },
+  { value: "sante", label: "Santé" },
   { value: "autres", label: "Autres" },
 ];
