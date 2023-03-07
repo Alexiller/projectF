@@ -17,14 +17,7 @@ import ShowListAmount from "./ShowListAmount";
 export default function ModalManageAmount({ name }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
-  const [expenses, setExpenses] = useState([
-    {
-      id: Date.now(),
-      category: "",
-      name: "",
-      amount: null,
-    },
-  ]);
+  const [expenses, setExpenses] = useState([]);
 
   const handleToggle = () => setIsEditing(!isEditing);
 
@@ -48,10 +41,12 @@ export default function ModalManageAmount({ name }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
-    setExpenses((prev) => {
-      return { ...prev, [name]: value };
-    });
+    setExpenses((prev) => [
+      ...prev,
+      {
+        [name]: value,
+      },
+    ]);
   };
 
   function handleSubmit(e) {
