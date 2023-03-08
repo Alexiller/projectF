@@ -51,7 +51,6 @@ export default function EditListAmount({
                           name="category"
                           placeholder="Catégorie"
                           defaultValue={exp.category}
-                          onChange={(e) => handleChange(e)}
                         >
                           {categoryLists}
                         </Select>
@@ -63,7 +62,6 @@ export default function EditListAmount({
                           name="name"
                           placeholder="Intitulé"
                           defaultValue={exp.name}
-                          onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
                     </Td>
@@ -73,7 +71,6 @@ export default function EditListAmount({
                           name="amount"
                           placeholder="Montant"
                           defaultValue={exp.amount}
-                          onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
                     </Td>
@@ -83,7 +80,7 @@ export default function EditListAmount({
                   </Tr>
                 </>
               ))}
-            <Tr>
+            <Tr bg={"yellow.200"} borderRadius="5xl">
               <Td>
                 <FormControl isRequired>
                   <Select
