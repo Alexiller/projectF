@@ -19,16 +19,19 @@ export default function ModalManageAmount({ name }) {
   const [isEditing, setIsEditing] = useState(false);
   const handleToggle = () => setIsEditing(!isEditing);
 
-  const [expenses, setExpenses] = useState([]);
-  const [addExpense, setAddExpense] = useState({});
+  // permanent, toutes les dépenses
+  const [expenses, setExpenses] = useState([{
+    id: Date.now(),
+    category: 'sante',
+    amount: 20,
+    name: 'blabla'
+  }]);
 
   function handleAddExpense(addExpense) {
     setExpenses((prevExpenses) => [...prevExpenses, addExpense]);
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    handleAddExpense(addExpense);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
 
@@ -43,33 +46,14 @@ export default function ModalManageAmount({ name }) {
         <ModalContent>
           <ModalHeader>Dépenses {name}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
             {isEditing ? (
               <EditListAmount
                 expenses={expenses}
-                setExpenses={setExpenses}
-                addExpense={addExpense}
-                setAddExpense={setAddExpense}
-                handleAddLineExpense={handleAddExpense}
+                handleSubmit={handleSubmit}
               />
             ) : (
-              <ShowListAmount expenses={expenses} />
+              <ShowListAmount expenses={expenses} handleToggle={handleToggle} />
             )}
-          </ModalBody>
-          <ModalFooter>
-            {isEditing ? (
-              <Button colorScheme="green" mr={3} onClick={handleSubmit}>
-                Valider
-              </Button>
-            ) : (
-              <Button colorScheme="yellow" mr={3} onClick={handleToggle}>
-                Edit
-              </Button>
-            )}
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
