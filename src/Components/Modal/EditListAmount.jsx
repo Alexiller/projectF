@@ -19,7 +19,6 @@ export default function EditListAmount({
   expenses,
   addExpense,
   setAddExpense,
-  handleAddLineExpense,
 }) {
   const categoryLists = CATEGORY_LIST.map((categoryList) => (
     <option value={categoryList.value}>{categoryList.label}</option>

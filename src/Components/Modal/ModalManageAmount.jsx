@@ -20,17 +20,24 @@ export default function ModalManageAmount({ name }) {
   const handleToggle = () => setIsEditing(!isEditing);
 
   const [expenses, setExpenses] = useState([]);
-  const [addExpense, setAddExpense] = useState({});
+  const [addExpense, setAddExpense] = useState({
+    category: "",
+    name: "",
+    amount: null,
+  });
 
   function handleAddExpense(addExpense) {
     setExpenses((prevExpenses) => [...prevExpenses, addExpense]);
   }
+  console.log(expenses);
 
   function handleSubmit(e) {
     e.preventDefault();
     handleAddExpense(addExpense);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
+
+  // console.log(expenses);
 
   return (
     <>
@@ -47,6 +54,7 @@ export default function ModalManageAmount({ name }) {
                 expenses={expenses}
                 addExpense={addExpense}
                 setAddExpense={setAddExpense}
+                handleAddLineExpense={handleAddExpense}
               />
             ) : (
               <ShowListAmount expenses={expenses} />
