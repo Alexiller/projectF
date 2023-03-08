@@ -7,9 +7,9 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
-export default function ShowListAmount({ expensesLists }) {
+export default function ShowListAmount({ expenses }) {
   return (
     <>
       <TableContainer>
@@ -22,7 +22,7 @@ export default function ShowListAmount({ expensesLists }) {
             </Tr>
           </Thead>
           <Tbody>
-            {expensesLists.map((expense) => (
+            {expenses.map((expense) => (
               <>
                 <Tr>
                   <Td>{expense.category}</Td>

@@ -17,44 +17,20 @@ import ShowListAmount from "./ShowListAmount";
 export default function ModalManageAmount({ name }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
-  const [expenses, setExpenses] = useState([]);
-
   const handleToggle = () => setIsEditing(!isEditing);
 
-  const handleDelete = (id) => {
-    setExpenses((prevExpenses) => {
-      return prevExpenses.filter((expense) => expense.id !== id);
-    });
-  };
+  const [expenses, setExpenses] = useState([]);
+  const [addExpense, setAddExpense] = useState({});
 
-  const handleAddItem = () => {
-    setExpenses((prevExpenses) => [
-      ...prevExpenses,
-      {
-        id: Date.now(),
-        category: "",
-        name: "",
-        amount: null,
-      },
-    ]);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setExpenses((prevExpenses) => [
-      ...prevExpenses,
-      {
-        [name]: value,
-      },
-    ]);
-  };
+  function handleAddExpense(addExpense) {
+    setExpenses((prevExpenses) => [...prevExpenses, addExpense]);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
+    handleAddExpense(addExpense);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
-
-  console.log(expenses);
 
   return (
     <>
@@ -68,14 +44,12 @@ export default function ModalManageAmount({ name }) {
           <ModalBody>
             {isEditing ? (
               <EditListAmount
-                expensesLists={expenses}
-                setExpenses={setExpenses}
-                handleAddItem={handleAddItem}
-                handleDelete={handleDelete}
-                handleChange={handleChange}
+                expenses={expenses}
+                addExpense={addExpense}
+                setAddExpense={setAddExpense}
               />
             ) : (
-              <ShowListAmount expensesLists={expenses} />
+              <ShowListAmount expenses={expenses} />
             )}
           </ModalBody>
           <ModalFooter>

@@ -12,18 +12,23 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { CATEGORY_LIST } from "../../Utils/utils";
 
 export default function EditListAmount({
-  expensesLists,
-  handleDelete,
-  handleAddItem,
-  handleChange,
+  expenses,
+  addExpense,
+  setAddExpense,
+  handleAddLineExpense,
 }) {
   const categoryLists = CATEGORY_LIST.map((categoryList) => (
     <option value={categoryList.value}>{categoryList.label}</option>
   ));
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setAddExpense({ ...addExpense, [name]: value });
+  }
 
   return (
     <>
@@ -37,54 +42,87 @@ export default function EditListAmount({
             </Tr>
           </Thead>
           <Tbody>
-            {expensesLists.map((expense) => (
-              <>
-                <Tr>
-                  <Td>
-                    <FormControl isRequired>
-                      <Select
-                        name="category"
-                        placeholder="Catégorie"
-                        defaultValue={expense.category}
-                        onChange={handleChange}
-                      >
-                        {categoryLists}
-                      </Select>
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <FormControl isRequired>
-                      <Input
-                        name="name"
-                        placeholder="Intitulé"
-                        defaultValue={expense.name}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <FormControl isRequired>
-                      <Input
-                        name="montant"
-                        placeholder="Montant"
-                        defaultValue={expense.amount}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <DeleteIcon onClick={() => handleDelete(expense.id)} />
-                  </Td>
-                </Tr>
-              </>
-            ))}
+            {expenses &&
+              expenses.map((exp) => (
+                <>
+                  <Tr>
+                    <Td>
+                      <FormControl isRequired>
+                        <Select
+                          name="category"
+                          placeholder="Catégorie"
+                          defaultValue={exp.category}
+                          onChange={(e) => handleChange(e)}
+                        >
+                          {categoryLists}
+                        </Select>
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <FormControl isRequired>
+                        <Input
+                          name="name"
+                          placeholder="Intitulé"
+                          defaultValue={exp.name}
+                          onChange={(e) => handleChange(e)}
+                        />
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <FormControl isRequired>
+                        <Input
+                          name="amount"
+                          placeholder="Montant"
+                          defaultValue={exp.amount}
+                          onChange={(e) => handleChange(e)}
+                        />
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <DeleteIcon onClick="" />
+                    </Td>
+                  </Tr>
+                </>
+              ))}
+            <Tr>
+              <Td>
+                <FormControl isRequired>
+                  <Select
+                    name="category"
+                    placeholder="Catégorie"
+                    defaultValue={addExpense.category}
+                    onChange={(e) => handleChange(e)}
+                  >
+                    {categoryLists}
+                  </Select>
+                </FormControl>
+              </Td>
+              <Td>
+                <FormControl isRequired>
+                  <Input
+                    name="name"
+                    placeholder="Intitulé"
+                    defaultValue={addExpense.name}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormControl>
+              </Td>
+              <Td>
+                <FormControl isRequired>
+                  <Input
+                    name="amount"
+                    placeholder="Montant"
+                    defaultValue={addExpense.amount}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </FormControl>
+              </Td>
+              <Td>
+                <DeleteIcon onClick="" />
+              </Td>
+            </Tr>
           </Tbody>
-          <Button
-            onClick={() => handleAddItem()}
-            colorScheme="gray"
-            textAlign={"right"}
-            mr={3}
-          >
+          <Button onClick="" colorScheme="gray" textAlign={"right"} mr={3}>
             ➕
           </Button>
         </Table>
