@@ -1,11 +1,8 @@
 import { EditIcon } from "@chakra-ui/icons";
 import {
-  Button,
   Modal,
-  ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   useDisclosure,
@@ -22,28 +19,16 @@ export default function ModalManageAmount({ name }) {
   // permanent, toutes les dépenses
   const [expenses, setExpenses] = useState([
     {
-      id: Date.now(),
-      category: "sante",
-      amount: 20,
-      name: "blabla",
-    },
-    {
-      id: Date.now() + 1,
-      category: "enfants",
-      amount: 599,
-      name: "test",
+      id: "",
+      category: "",
+      name: "",
+      amount: "",
     },
   ]);
 
-  function handleAddExpense(addExpense) {
-    setExpenses((prevExpenses) => [...prevExpenses, addExpense]);
-  }
-
-  function handleSubmit(e) {
+  function handleSubmit() {
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
-
-  console.log(expenses);
 
   return (
     <>

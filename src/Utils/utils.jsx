@@ -31,3 +31,10 @@ export const CATEGORY_LIST = [
   { value: "sante", label: "Santé" },
   { value: "autres", label: "Autres" },
 ];
+
+export const BG_COLOR_PANEL = {
+  global: "purple.200",
+  invest: "blue.200",
+  obligatoire: "orange.200",
+  loisir: "green.200",
+};

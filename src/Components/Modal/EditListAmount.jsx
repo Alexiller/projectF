@@ -41,7 +41,7 @@ export default function EditListAmount({ expenses, handleSubmit }) {
             [fieldName]: fieldValue,
           };
         }
-        return expense; //si ce n'est pas le cas alors on retourne les valeurs non modifié de expense
+        return expense; //si ce n'est pas le cas alors on retourne la ligne non modifié de expense
       });
     });
   }
@@ -51,9 +51,9 @@ export default function EditListAmount({ expenses, handleSubmit }) {
       ...oldExpensesForm,
       {
         id: Date.now(),
-        category: "sante",
-        amount: 20,
-        name: "blabla",
+        category: "",
+        amount: undefined,
+        name: "",
       },
     ]);
   }
@@ -112,21 +112,22 @@ export default function EditListAmount({ expenses, handleSubmit }) {
                     </FormControl>
                   </Td>
                   <Td>
-                    <DeleteIcon onClick={() => deleteExpense(expense.id)} />
+                    <Button
+                      onClick={() => deleteExpense(expense.id)}
+                      colorScheme="red"
+                    >
+                      <DeleteIcon />
+                    </Button>
                   </Td>
                 </Tr>
               ))}
             </Tbody>
           </Table>
-          <Button
-            onClick={addExpense}
-            colorScheme="gray"
-            textAlign={"right"}
-            mr={3}
-          >
-            ➕
-          </Button>
         </TableContainer>
+
+        <Button onClick={addExpense} colorScheme="gray" mt={3}>
+          Ajouter une ligne
+        </Button>
       </ModalBody>
       <FooterModal label="Valider" color="green" onClick={handleSubmit} />
     </>
