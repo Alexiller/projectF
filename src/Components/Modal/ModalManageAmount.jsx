@@ -20,12 +20,20 @@ export default function ModalManageAmount({ name }) {
   const handleToggle = () => setIsEditing(!isEditing);
 
   // permanent, toutes les dépenses
-  const [expenses, setExpenses] = useState([{
-    id: Date.now(),
-    category: 'sante',
-    amount: 20,
-    name: 'blabla'
-  }]);
+  const [expenses, setExpenses] = useState([
+    {
+      id: Date.now(),
+      category: "sante",
+      amount: 20,
+      name: "blabla",
+    },
+    {
+      id: Date.now() + 1,
+      category: "enfants",
+      amount: 599,
+      name: "test",
+    },
+  ]);
 
   function handleAddExpense(addExpense) {
     setExpenses((prevExpenses) => [...prevExpenses, addExpense]);
@@ -46,14 +54,11 @@ export default function ModalManageAmount({ name }) {
         <ModalContent>
           <ModalHeader>Dépenses {name}</ModalHeader>
           <ModalCloseButton />
-            {isEditing ? (
-              <EditListAmount
-                expenses={expenses}
-                handleSubmit={handleSubmit}
-              />
-            ) : (
-              <ShowListAmount expenses={expenses} handleToggle={handleToggle} />
-            )}
+          {isEditing ? (
+            <EditListAmount expenses={expenses} handleSubmit={handleSubmit} />
+          ) : (
+            <ShowListAmount expenses={expenses} handleToggle={handleToggle} />
+          )}
         </ModalContent>
       </Modal>
     </>
