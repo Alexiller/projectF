@@ -27,17 +27,17 @@ export default function ShowListAmount({ expenses, handleToggle }) {
             </Thead>
             <Tbody>
               {expenses.map((expense) => (
-                  <Tr key={expense.id}>
-                    <Td>{expense.category}</Td>
-                    <Td>{expense.name}</Td>
-                    <Td>{expense.amount}</Td>
-                  </Tr>
+                <Tr key={expense.id}>
+                  <Td>{expense.category}</Td>
+                  <Td>{expense.name}</Td>
+                  <Td>{expense.amount}</Td>
+                </Tr>
               ))}
             </Tbody>
           </Table>
         </TableContainer>
       </ModalBody>
-      <FooterModal label="Editer" color="yellow" onClick={handleToggle}/>
+      <FooterModal label="Editer" color="yellow" onClick={handleToggle} />
     </>
   );
 }

@@ -24,8 +24,14 @@ export default function EditListAmount({ expenses, handleSubmit }) {
     </option>
   ));
 
+  // vérifie si le expenses est vide, si vide alors ajout d'une ligne sinon return expenses
+  const initialExpenses =
+    expenses.length === 0
+      ? [{ id: Date.now(), name: "", category: "", amount: 0 }]
+      : expenses;
+
   //ce usestate va prendre comme valeur initiale, la valeur de expenses (liste des expenses)
-  const [expensesForm, setExpensesForm] = useState(expenses);
+  const [expensesForm, setExpensesForm] = useState(initialExpenses);
 
   // fonction permettant de modifier la ligne du formulaire
   function handleChange(e, id) {
@@ -58,6 +64,7 @@ export default function EditListAmount({ expenses, handleSubmit }) {
     ]);
   }
 
+  // TODO : désactiver le bouton si plus qu'une ligne d'édition
   function deleteExpense(id) {
     setExpensesForm((oldExpensesForm) =>
       oldExpensesForm.filter((expense) => expense.id != id)
@@ -129,7 +136,11 @@ export default function EditListAmount({ expenses, handleSubmit }) {
           Ajouter une ligne
         </Button>
       </ModalBody>
-      <FooterModal label="Valider" color="green" onClick={handleSubmit} />
+      <FooterModal
+        label="Valider"
+        color="green"
+        onClick={() => handleSubmit(expensesForm)}
+      />
     </>
   );
 }

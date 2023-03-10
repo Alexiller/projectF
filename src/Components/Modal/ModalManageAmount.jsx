@@ -17,16 +17,10 @@ export default function ModalManageAmount({ name }) {
   const handleToggle = () => setIsEditing(!isEditing);
 
   // permanent, toutes les dépenses
-  const [expenses, setExpenses] = useState([
-    {
-      id: "",
-      category: "",
-      name: "",
-      amount: "",
-    },
-  ]);
+  const [expenses, setExpenses] = useState([]);
 
-  function handleSubmit() {
+  function handleSubmit(expensesForm) {
+    setExpenses(expensesForm);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
 
