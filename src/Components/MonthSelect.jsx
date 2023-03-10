@@ -7,8 +7,15 @@ function shiftMonth(month, offset) {
   return ((month - 1 + (offset % 12) + 12) % 12) + 1;
 }
 
+function pastYear(month, year) {
+  return month === 1 ? year - 1 : year;
+}
+
+function nextYear(month, year) {
+  return month === 12 ? year + 1 : year;
+}
+
 export default function MonthSelect() {
-  let yearValue = new Date().getFullYear();
   let monthValue = new Date().getMonth() + 1;
 
   const [date, setDate] = useState({
@@ -22,18 +29,27 @@ export default function MonthSelect() {
   const decreaseMonth = () => {
     setDate((oldDate) => {
       const newMonth = shiftMonth(oldDate.month, -1);
+      const newYear = pastYear(oldDate.month, oldDate.year);
       return {
         ...oldDate,
         month: newMonth,
+        year: newYear,
       };
     });
   };
 
+  console.log("year after state", date.year);
+
   const increaseMonth = () => {
-    setDate((oldDate) => ({
-      ...oldDate,
-      month: shiftMonth(oldDate.month, 1),
-    }));
+    setDate((oldDate) => {
+      const newMonth = shiftMonth(oldDate.month, 1);
+      const newYear = nextYear(oldDate.month, oldDate.year);
+      return {
+        ...oldDate,
+        month: newMonth,
+        year: newYear,
+      };
+    });
   };
 
   const MonthName = getMonthName(date.month);
@@ -48,7 +64,7 @@ export default function MonthSelect() {
       </Center>
       <Heading textAlign={"center"} fontSize="50">
         {" "}
-        {MonthName} {yearValue}
+        {MonthName} {date.year}
       </Heading>
       <Center>
         <Button colorScheme="white" size="lg">
