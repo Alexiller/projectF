@@ -3,23 +3,41 @@ import { Button, Center, Flex, Heading, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { getMonthName } from "../Utils/utils";
 
+function shiftMonth(month, offset) {
+  return ((month - 1 + (offset % 12) + 12) % 12) + 1;
+}
+
 export default function MonthSelect() {
   let yearValue = new Date().getFullYear();
   let monthValue = new Date().getMonth() + 1;
 
-  const [month, setMonth] = useState(monthValue);
-  const [year, setYear] = useState(yearValue);
+  const [date, setDate] = useState({
+    month: monthValue,
+    year: 2023,
+  });
+
+  // date.month = 1 --> year - 1
+  // date.month = 12 --> year + 1
 
   const decreaseMonth = () => {
-    setMonth((month) => month - 1);
+    setDate((oldDate) => {
+      const newMonth = shiftMonth(oldDate.month, -1);
+      return {
+        ...oldDate,
+        month: newMonth,
+      };
+    });
   };
 
   const increaseMonth = () => {
-    setMonth((month) => month + 1);
+    setDate((oldDate) => ({
+      ...oldDate,
+      month: shiftMonth(oldDate.month, 1),
+    }));
   };
 
-  const MonthName = getMonthName(month);
-  console.log(month);
+  const MonthName = getMonthName(date.month);
+  console.log(date);
 
   return (
     <Flex justifyContent="space-between" color="white">

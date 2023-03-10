@@ -1,0 +1,20 @@
+[
+  {
+    "id": "0001",
+    "category": "sante",
+    "name": "pharmacie",
+    "amount": 69
+  },
+  {
+    "id": "0002",
+    "category": "loisir",
+    "name": "Hunt ShowDown",
+    "amount": 1000
+  },
+  {
+    "id": "0003",
+    "category": "alimentation",
+    "name": "Cora",
+    "amount": 50
+  }
+]

@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import EditListAmount from "./EditListAmount";
 import ShowListAmount from "./ShowListAmount";
+import dummyExpenses from "/src/data/expenses.json";
 
 export default function ModalManageAmount({ name }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -17,7 +18,7 @@ export default function ModalManageAmount({ name }) {
   const handleToggle = () => setIsEditing(!isEditing);
 
   // permanent, toutes les dépenses
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(dummyExpenses);
 
   function handleSubmit(expensesForm) {
     setExpenses(expensesForm);

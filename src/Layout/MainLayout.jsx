@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
 import { BG_COLOR_PANEL } from "../Utils/utils";
@@ -46,7 +46,6 @@ function MainLayout() {
                 name="Global"
                 currentAmount={"400"}
                 max={"1000"}
-                color={BG_COLOR_PANEL.global}
                 displayCurrentAmount={false}
                 displayProgressBar={true}
               ></BudgetCard>
@@ -64,7 +63,6 @@ function MainLayout() {
                 max={"1000"}
                 displayCurrentAmount={true}
                 displayProgressBar={false}
-                bg={BG_COLOR_PANEL.invest}
               ></BudgetCard>
             </GridItem>
             <GridItem
@@ -79,7 +77,6 @@ function MainLayout() {
                 max={"1000"}
                 displayCurrentAmount={true}
                 displayProgressBar={false}
-                bg={BG_COLOR_PANEL.obligatoire}
               ></BudgetCard>
             </GridItem>
             <GridItem
