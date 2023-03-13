@@ -4,11 +4,33 @@ import Footer from "./Footer";
 import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
-import { BG_COLOR_PANEL } from "../Utils/utils";
+import { BG_COLOR_PANEL, BUDGET_CATEGORYS } from "../Utils/utils";
 
 function MainLayout() {
+
+
+
+  const BudgetCardList = BUDGET_CATEGORYS.map((budgetCategory) => (
+    <GridItem
+    colSpan={budgetCategory.colSpan}
+    colStart={budgetCategory.colStart}
+    colEnd={budgetCategory.colEnd}
+    borderRadius="xl"
+    p="3"
+    bg={budgetCategory.bgColor}
+  >
+    <BudgetCard
+  name={budgetCategory.name}
+  currentAmount={budgetCategory.currentAmount}
+  max={budgetCategory.max}
+  displayCurrentAmount={budgetCategory.displayCurrentAmount}
+  displayProgressBar={budgetCategory.displayProgressBar}
+/>
+  </GridItem>
+  ));
+
+
   return (
-    <>
       <Grid
         templateAreas={`"header header"
                   "main main"
@@ -34,73 +56,13 @@ function MainLayout() {
             >
               <MonthSelect />
             </GridItem>
-            <GridItem
-              colSpan="4"
-              colStart="2"
-              colEnd="8"
-              borderRadius="xl"
-              p="3"
-              bg={BG_COLOR_PANEL.global}
-            >
-              <BudgetCard
-                name="Global"
-                currentAmount={"400"}
-                max={"1000"}
-                displayCurrentAmount={false}
-                displayProgressBar={true}
-              ></BudgetCard>
-            </GridItem>
-            <GridItem
-              colStart="2"
-              colSpan="2"
-              borderRadius="xl"
-              p="3"
-              bg={BG_COLOR_PANEL.invest}
-            >
-              <BudgetCard
-                name="Investissement"
-                currentAmount={"1000"}
-                max={"1000"}
-                displayCurrentAmount={true}
-                displayProgressBar={false}
-              ></BudgetCard>
-            </GridItem>
-            <GridItem
-              colSpan="2"
-              borderRadius="xl"
-              p="3"
-              bg={BG_COLOR_PANEL.obligatoire}
-            >
-              <BudgetCard
-                name="Obligatoire"
-                currentAmount={"400"}
-                max={"1000"}
-                displayCurrentAmount={true}
-                displayProgressBar={false}
-              ></BudgetCard>
-            </GridItem>
-            <GridItem
-              colSpan="2"
-              borderRadius="xl"
-              p="3"
-              bg={BG_COLOR_PANEL.loisir}
-            >
-              <BudgetCard
-                name="Loisir"
-                currentAmount={"400"}
-                max={"1000"}
-                displayProgressBar={true}
-                displayCurrentAmount={false}
-                bg={BG_COLOR_PANEL.loisir}
-              ></BudgetCard>
-            </GridItem>
+            {BudgetCardList}
           </Grid>
         </GridItem>
         <GridItem bg="blue.300" area={"footer"}>
           <Footer />
         </GridItem>
       </Grid>
-    </>
   );
 }
 

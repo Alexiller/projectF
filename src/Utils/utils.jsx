@@ -15,6 +15,14 @@ export function getMonthName(monthNumber) {
     .toUpperCase();
 }
 
+
+  export function getProgressBarVariant(currentAmount, max) {
+    const ratio = currentAmount / max;
+    if (ratio < 0.5) return "green";
+    if (ratio < 0.75) return "yellow";
+    return "red";
+  }
+
 export const CATEGORY_LIST = [
   { value: "alimentation", label: "Alimentation" },
   { value: "habillement", label: "Habillement" },
@@ -30,6 +38,14 @@ export const CATEGORY_LIST = [
   { value: "service", label: "Service" },
   { value: "sante", label: "Santé" },
   { value: "autres", label: "Autres" },
+];
+
+export const BUDGET_CATEGORYS = [
+{ name:"Global", currentAmount:400, max:1000, displayCurrentAmount:false, displayProgressBar:true, bgColor:"purple.200", colSpan:"4", colStart:"2", colEnd:"8"},
+{ name:"Investissement", currentAmount:400, max:1000, displayCurrentAmount:false, displayProgressBar:true, bgColor:"blue.200", colSpan:"2", colStart:"2", colEnd:"" },
+{ name:"Obligatoire", currentAmount:200, max:1000, displayCurrentAmount:false, displayProgressBar:true, bgColor:"orange.200", colSpan:"2", colStart:"", colEnd:"" },
+{ name:"Loisir", currentAmount:800, max:1000, displayCurrentAmount:false, displayProgressBar:true, bgColor:"green.200", colSpan:"2", colStart:"", colEnd:"" }
+
 ];
 
 export const BG_COLOR_PANEL = {

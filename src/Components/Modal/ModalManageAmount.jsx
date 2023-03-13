@@ -28,7 +28,6 @@ export default function ModalManageAmount({ name }) {
   return (
     <>
       <EditIcon boxSize={"5"} onClick={onOpen} />
-
       <Modal isOpen={isOpen} onClose={onClose} size="4xl">
         <ModalOverlay />
         <ModalContent>

@@ -7,7 +7,7 @@ import {
   StatHelpText,
   StatNumber,
 } from "@chakra-ui/react";
-import { currencyFormatter } from "../Utils/utils";
+import { currencyFormatter, getProgressBarVariant } from "../Utils/utils";
 import React from "react";
 import ModalManageAmount from "./Modal/ModalManageAmount";
 
@@ -18,13 +18,6 @@ export default function BudgetCard({
   displayCurrentAmount,
   displayProgressBar,
 }) {
-  function getProgressBarVariant(currentAmount, max) {
-    const ratio = currentAmount / max;
-    if (ratio < 0.5) return "green";
-    if (ratio < 0.75) return "yellow";
-    return "red";
-  }
-
   return (
     <Stat>
       <HStack justifyContent={"space-between"}>

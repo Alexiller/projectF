@@ -23,9 +23,6 @@ export default function MonthSelect() {
     year: 2023,
   });
 
-  // date.month = 1 --> year - 1
-  // date.month = 12 --> year + 1
-
   const decreaseMonth = () => {
     setDate((oldDate) => {
       const newMonth = shiftMonth(oldDate.month, -1);
@@ -63,7 +60,6 @@ export default function MonthSelect() {
         </Button>
       </Center>
       <Heading textAlign={"center"} fontSize="50">
-        {" "}
         {MonthName} {date.year}
       </Heading>
       <Center>

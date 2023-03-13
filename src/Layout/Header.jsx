@@ -3,7 +3,6 @@ import React from "react";
 
 function Header() {
   return (
-    <>
       <HStack spacing="5">
         <Avatar name="Alex Des" src="https://bit.ly/dan-abramov" />
         <Center>
@@ -12,7 +11,6 @@ function Header() {
           </Heading>
         </Center>
       </HStack>
-    </>
   );
 }
 
