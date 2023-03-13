@@ -59,7 +59,7 @@ export default function MonthSelect() {
           <ChevronLeftIcon boxSize={12} />
         </Button>
       </Center>
-      <Heading textAlign={"center"} fontSize="50">
+      <Heading textAlign="center" fontSize="50">
         {MonthName} {date.year}
       </Heading>
       <Center>
