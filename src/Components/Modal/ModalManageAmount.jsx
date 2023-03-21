@@ -10,20 +10,28 @@ import {
 import React, { useState } from "react";
 import EditListAmount from "./EditListAmount";
 import ShowListAmount from "./ShowListAmount";
-import dummyExpenses from "/src/data/expenses.json";
 
-export default function ModalManageAmount({ name }) {
+export default function ModalManageAmount({
+  expenses,
+  updateExpense,
+  budgetCategory,
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
   const handleToggle = () => setIsEditing(!isEditing);
 
-  // permanent, toutes les dépenses
-  const [expenses, setExpenses] = useState(dummyExpenses);
-
   function handleSubmit(expensesForm) {
-    setExpenses(expensesForm);
+    updateExpense(expensesForm);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
+
+  // permet de faire le total d'un array avec la méthode reduce
+  const totalExpense = expenses.reduce(
+    (previousExpense, currentExpense) =>
+      previousExpense + currentExpense.amount,
+    0
+  );
+  console.log(expenses, totalExpense);
 
   return (
     <>
@@ -31,7 +39,7 @@ export default function ModalManageAmount({ name }) {
       <Modal isOpen={isOpen} onClose={onClose} size="4xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Dépenses {name}</ModalHeader>
+          <ModalHeader>Dépenses {budgetCategory}</ModalHeader>
           <ModalCloseButton />
           {isEditing ? (
             <EditListAmount expenses={expenses} handleSubmit={handleSubmit} />

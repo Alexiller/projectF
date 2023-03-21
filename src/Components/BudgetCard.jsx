@@ -12,33 +12,41 @@ import React from "react";
 import ModalManageAmount from "./Modal/ModalManageAmount";
 
 export default function BudgetCard({
+  expenses,
+  updateExpense,
   budgetCategory,
   currentAmount,
   max,
   displayCurrentAmount,
   displayProgressBar,
 }) {
+  const currentAmountInEuros = currencyFormatter.format(currentAmount);
+  const progressAmount = `${currentAmountInEuros} / ${currencyFormatter.format(
+    max
+  )}`;
+
   return (
     <Stat>
       <HStack justifyContent={"space-between"}>
         <Heading fontSize={20}>{budgetCategory}</Heading>
-        <ModalManageAmount budgetCategory={budgetCategory} />
+        <ModalManageAmount
+          budgetCategory={budgetCategory}
+          expenses={expenses}
+          updateExpense={updateExpense}
+        />
       </HStack>
-      {displayCurrentAmount ? (
+      {displayCurrentAmount && (
         <Center>
-          <StatNumber fontSize="6xl">{currentAmount}€</StatNumber>
+          <StatNumber fontSize="6xl">{currentAmountInEuros}</StatNumber>
         </Center>
-      ) : null}
-      {displayProgressBar ? (
+      )}
+      {displayProgressBar && (
         <>
-          <StatHelpText textAlign={"right"}>
-            {currencyFormatter.format(currentAmount)} /{" "}
-            {currencyFormatter.format(max)}
-          </StatHelpText>
+          <StatHelpText textAlign="right">{progressAmount}</StatHelpText>
           <Progress
             h="20"
             colorScheme={getProgressBarVariant(currentAmount, max)}
-            borderRadius={"md"}
+            borderRadius="md"
             min={0}
             max={max}
             value={currentAmount}
@@ -46,7 +54,7 @@ export default function BudgetCard({
             isAnimated
           />
         </>
-      ) : null}
+      )}
     </Stat>
   );
 }

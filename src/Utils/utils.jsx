@@ -64,6 +64,7 @@ export const BUDGET_CATEGORYS = [
   },
   {
     budgetCategory: "Obligatoire",
+    expenses: ["factures", "sante"],
     currentAmount: 200,
     max: 1000,
     displayCurrentAmount: false,

@@ -9,14 +9,14 @@
   {
     "id": "0002",
     "categoryBudget": "loisir",
-    "categoryExpense": "loisir",
+    "categoryExpense": "Jeux",
     "name": "Hunt ShowDown",
     "amount": 40
   },
   {
     "id": "0003",
     "categoryBudget": "investissement",
-    "categoryExpense": "alimentation",
+    "categoryExpense": "ETF",
     "name": "Cora",
     "amount": 50
   }
