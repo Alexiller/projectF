@@ -12,7 +12,7 @@ import React from "react";
 import ModalManageAmount from "./Modal/ModalManageAmount";
 
 export default function BudgetCard({
-  name,
+  budgetCategory,
   currentAmount,
   max,
   displayCurrentAmount,
@@ -21,8 +21,8 @@ export default function BudgetCard({
   return (
     <Stat>
       <HStack justifyContent={"space-between"}>
-        <Heading fontSize={20}>{name}</Heading>
-        <ModalManageAmount name={name} />
+        <Heading fontSize={20}>{budgetCategory}</Heading>
+        <ModalManageAmount budgetCategory={budgetCategory} />
       </HStack>
       {displayCurrentAmount ? (
         <Center>

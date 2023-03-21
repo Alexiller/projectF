@@ -22,7 +22,7 @@ export function getProgressBarVariant(currentAmount, max) {
   return "red";
 }
 
-export const CATEGORY_LIST = [
+export const EXPENSE_CATEGORY_LIST = [
   { value: "alimentation", label: "Alimentation" },
   { value: "habillement", label: "Habillement" },
   { value: "cadeaux", label: "Cadeaux" },
@@ -41,7 +41,7 @@ export const CATEGORY_LIST = [
 
 export const BUDGET_CATEGORYS = [
   {
-    name: "Global",
+    budgetCategory: "Global",
     currentAmount: 400,
     max: 1000,
     displayCurrentAmount: false,
@@ -52,7 +52,7 @@ export const BUDGET_CATEGORYS = [
     colEnd: "8",
   },
   {
-    name: "Investissement",
+    budgetCategory: "Investissement",
     currentAmount: 400,
     max: 1000,
     displayCurrentAmount: false,
@@ -63,7 +63,7 @@ export const BUDGET_CATEGORYS = [
     colEnd: "",
   },
   {
-    name: "Obligatoire",
+    budgetCategory: "Obligatoire",
     currentAmount: 200,
     max: 1000,
     displayCurrentAmount: false,
@@ -74,7 +74,7 @@ export const BUDGET_CATEGORYS = [
     colEnd: "",
   },
   {
-    name: "Loisir",
+    budgetCategory: "Loisir",
     currentAmount: 800,
     max: 1000,
     displayCurrentAmount: false,

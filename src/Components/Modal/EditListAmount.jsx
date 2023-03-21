@@ -14,11 +14,11 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { CATEGORY_LIST } from "../../Utils/utils";
+import { EXPENSE_CATEGORY_LIST } from "../../Utils/utils";
 import FooterModal from "./FooterModal";
 
 export default function EditListAmount({ expenses, handleSubmit }) {
-  const categoryLists = CATEGORY_LIST.map((categoryList) => (
+  const categoryLists = EXPENSE_CATEGORY_LIST.map((categoryList) => (
     <option key={categoryList.value} value={categoryList.value}>
       {categoryList.label}
     </option>

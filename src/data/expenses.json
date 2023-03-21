@@ -1,19 +1,22 @@
 [
   {
     "id": "0001",
-    "category": "sante",
+    "categoryBudget": "obligatoire",
+    "categoryExpense": "sante",
     "name": "pharmacie",
     "amount": 69
   },
   {
     "id": "0002",
-    "category": "loisir",
+    "categoryBudget": "loisir",
+    "categoryExpense": "loisir",
     "name": "Hunt ShowDown",
-    "amount": 1000
+    "amount": 40
   },
   {
     "id": "0003",
-    "category": "alimentation",
+    "categoryBudget": "investissement",
+    "categoryExpense": "alimentation",
     "name": "Cora",
     "amount": 50
   }
