@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Button, Center, Flex, Heading, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { getMonthName } from "../Utils/utils";
+import { getMonthName } from "../utils/utils";
 
 function shiftMonth(month, offset) {
   return ((month - 1 + (offset % 12) + 12) % 12) + 1;
@@ -35,8 +35,6 @@ export default function MonthSelect() {
     });
   };
 
-  console.log("year after state", date.year);
-
   const increaseMonth = () => {
     setDate((oldDate) => {
       const newMonth = shiftMonth(oldDate.month, 1);
@@ -50,7 +48,6 @@ export default function MonthSelect() {
   };
 
   const MonthName = getMonthName(date.month);
-  console.log(date);
 
   return (
     <Flex justifyContent="space-between" color="white">

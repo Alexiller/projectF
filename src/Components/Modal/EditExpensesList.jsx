@@ -14,7 +14,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { EXPENSE_CATEGORY_LIST } from "../../Utils/utils";
+import { EXPENSE_CATEGORY_LIST } from "../../models/budgetAndExpense";
 import FooterModal from "./FooterModal";
 
 export default function EditListAmount({ expenses, handleSubmit }) {

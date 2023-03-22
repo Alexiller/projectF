@@ -1,5 +1,6 @@
 import {
   Center,
+  GridItem,
   Heading,
   HStack,
   Progress,
@@ -7,7 +8,7 @@ import {
   StatHelpText,
   StatNumber,
 } from "@chakra-ui/react";
-import { currencyFormatter, getProgressBarVariant } from "../Utils/utils";
+import { currencyFormatter, getProgressBarVariant } from "../utils/utils";
 import React from "react";
 import ModalManageAmount from "./Modal/ModalManageAmount";
 
@@ -19,6 +20,10 @@ export default function BudgetCard({
   max,
   displayCurrentAmount,
   displayProgressBar,
+  bgColor,
+  colSpan,
+  colStart,
+  colEnd,
 }) {
   const currentAmountInEuros = currencyFormatter.format(currentAmount);
   const progressAmount = `${currentAmountInEuros} / ${currencyFormatter.format(
@@ -26,35 +31,44 @@ export default function BudgetCard({
   )}`;
 
   return (
-    <Stat>
-      <HStack justifyContent={"space-between"}>
-        <Heading fontSize={20}>{budgetCategory}</Heading>
-        <ModalManageAmount
-          budgetCategory={budgetCategory}
-          expenses={expenses}
-          updateExpense={updateExpense}
-        />
-      </HStack>
-      {displayCurrentAmount && (
-        <Center>
-          <StatNumber fontSize="6xl">{currentAmountInEuros}</StatNumber>
-        </Center>
-      )}
-      {displayProgressBar && (
-        <>
-          <StatHelpText textAlign="right">{progressAmount}</StatHelpText>
-          <Progress
-            h="20"
-            colorScheme={getProgressBarVariant(currentAmount, max)}
-            borderRadius="md"
-            min={0}
-            max={max}
-            value={currentAmount}
-            hasStripe
-            isAnimated
+    <GridItem
+      colSpan="2"
+      colStart="8"
+      colEnd="2"
+      bgColor="purple.200"
+      borderRadius="xl"
+      p="3"
+    >
+      <Stat>
+        <HStack justifyContent={"space-between"}>
+          <Heading fontSize={20}>{budgetCategory}</Heading>
+          <ModalManageAmount
+            budgetCategory={budgetCategory}
+            expenses={expenses}
+            updateExpense={updateExpense}
           />
-        </>
-      )}
-    </Stat>
+        </HStack>
+        {displayCurrentAmount && (
+          <Center>
+            <StatNumber fontSize="6xl">{currentAmountInEuros}</StatNumber>
+          </Center>
+        )}
+        {displayProgressBar && (
+          <>
+            <StatHelpText textAlign="right">{progressAmount}</StatHelpText>
+            <Progress
+              h="20"
+              colorScheme={getProgressBarVariant(currentAmount, max)}
+              borderRadius="md"
+              min={0}
+              max={max}
+              value={currentAmount}
+              hasStripe
+              isAnimated
+            />
+          </>
+        )}
+      </Stat>
+    </GridItem>
   );
 }

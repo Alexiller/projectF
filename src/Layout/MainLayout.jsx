@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
-import { BUDGET_CATEGORYS } from "../Utils/utils";
+import { BUDGET_CATEGORIES } from "../models/budgetAndExpense";
 import dummyExpenses from "/src/data/expenses.json";
 
 function MainLayout() {
@@ -23,14 +23,12 @@ function MainLayout() {
     setExpenses(formatedForm);
   };
 
-  const BudgetCardList = BUDGET_CATEGORYS.map((budgetCategory) => (
-    <GridItem {...budgetCategory} borderRadius="xl" p="3">
-      <BudgetCard
-        {...budgetCategory}
-        expenses={expenses} // plutôt que de tout envoyer ==> il faut filtrer
-        updateExpense={updateExpense}
-      />
-    </GridItem>
+  const BudgetCardList = BUDGET_CATEGORIES.map((budgetCategory) => (
+    <BudgetCard
+      {...budgetCategory}
+      expenses={expenses} // plutôt que de tout envoyer ==> il faut filtrer
+      updateExpense={updateExpense}
+    />
   ));
 
   return (

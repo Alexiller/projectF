@@ -8,8 +8,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import EditListAmount from "./EditListAmount";
-import ShowListAmount from "./ShowListAmount";
+import EditExpensesList from "./EditExpensesList";
+import ExpensesList from "./ExpensesList";
 
 export default function ModalManageAmount({
   expenses,
@@ -31,7 +31,6 @@ export default function ModalManageAmount({
       previousExpense + currentExpense.amount,
     0
   );
-  console.log(expenses, totalExpense);
 
   return (
     <>
@@ -42,9 +41,9 @@ export default function ModalManageAmount({
           <ModalHeader>Dépenses {budgetCategory}</ModalHeader>
           <ModalCloseButton />
           {isEditing ? (
-            <EditListAmount expenses={expenses} handleSubmit={handleSubmit} />
+            <EditExpensesList expenses={expenses} handleSubmit={handleSubmit} />
           ) : (
-            <ShowListAmount expenses={expenses} handleToggle={handleToggle} />
+            <ExpensesList expenses={expenses} handleToggle={handleToggle} />
           )}
         </ModalContent>
       </Modal>
