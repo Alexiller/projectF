@@ -23,11 +23,33 @@ function MainLayout() {
     setExpenses(formatedForm);
   };
 
-  const BudgetCardList = BUDGET_CATEGORIES.map((budgetCategory) => (
+  const BudgetCardList = BUDGET_CATEGORIES.map((budget) => (
+    // <BudgetCard
+    //   {...budget}
+    //   expenses={expenses.filter(
+    //     (expense) =>
+    //       expense.budgetCategory.toLowerCase() ===
+    //       budget.budgetCategory.toLowerCase()
+    //   )} // plutôt que de tout envoyer ==> il faut filtrer
+    //   updateExpense={updateExpense}
+    //   colSpan="2"
+    // />
+
     <BudgetCard
-      {...budgetCategory}
-      expenses={expenses} // plutôt que de tout envoyer ==> il faut filtrer
+      {...budget}
+      expenses={expenses.filter((expense) => {
+        const expenseBudgetCategory = expense.budgetCategory.toLowerCase();
+
+        const budgetCategory = budget.budgetCategory.toLowerCase();
+
+        // if (budgetExpenseCategory.includes(expenseCategory)) {
+        //   return budgetCategory;
+        // }
+
+        return expenseBudgetCategory === budgetCategory;
+      })} // plutôt que de tout envoyer ==> il faut filtrer
       updateExpense={updateExpense}
+      colSpan="2"
     />
   ));
 

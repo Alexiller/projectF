@@ -15,6 +15,7 @@ export default function ModalManageAmount({
   expenses,
   updateExpense,
   budgetCategory,
+  totalExpense,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
@@ -26,11 +27,6 @@ export default function ModalManageAmount({
   }
 
   // permet de faire le total d'un array avec la méthode reduce
-  const totalExpense = expenses.reduce(
-    (previousExpense, currentExpense) =>
-      previousExpense + currentExpense.amount,
-    0
-  );
 
   return (
     <>

@@ -1,23 +1,30 @@
 [
   {
     "id": "0001",
-    "categoryBudget": "obligatoire",
-    "categoryExpense": "sante",
+    "budgetCategory": "obligatoire",
+    "category": "sante",
     "name": "pharmacie",
     "amount": 69
   },
   {
     "id": "0002",
-    "categoryBudget": "loisir",
-    "categoryExpense": "Jeux",
+    "budgetCategory": "loisir",
+    "category": "jeux",
     "name": "Hunt ShowDown",
     "amount": 40
   },
   {
     "id": "0003",
-    "categoryBudget": "investissement",
-    "categoryExpense": "ETF",
+    "budgetCategory": "investissement",
+    "category": "etf",
     "name": "Cora",
     "amount": 50
+  },
+  {
+    "id": "0004",
+    "budgetCategory": "investissement",
+    "category": "etf",
+    "name": "test",
+    "amount": 500
   }
 ]

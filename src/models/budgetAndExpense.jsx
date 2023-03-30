@@ -64,7 +64,7 @@ export const BUDGET_CATEGORIES = [
   },
   {
     budgetCategory: "Investissement",
-    expenses: ["factures", "sante"],
+    category: ["ETF"],
     currentAmount: 400,
     max: 1000,
     displayCurrentAmount: false,
@@ -72,9 +72,8 @@ export const BUDGET_CATEGORIES = [
   },
   {
     budgetCategory: "Obligatoire",
-    expenses: [
+    category: [
       "alimentation",
-      "factures",
       "sante",
       "internetTvTelephone",
       "enfants",
@@ -87,12 +86,13 @@ export const BUDGET_CATEGORIES = [
   },
   {
     budgetCategory: "Loisir",
-    expenses: [
+    category: [
       "cadeaux",
       "habillement",
       "sports",
       "restaurationHotel",
       "transports",
+      "jeux",
     ],
     currentAmount: 800,
     max: 1000,

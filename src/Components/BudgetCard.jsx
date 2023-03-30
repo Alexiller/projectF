@@ -25,7 +25,13 @@ export default function BudgetCard({
   colStart,
   colEnd,
 }) {
-  const currentAmountInEuros = currencyFormatter.format(currentAmount);
+  const totalExpense = expenses.reduce(
+    (previousExpense, currentExpense) =>
+      previousExpense + currentExpense.amount,
+    0
+  );
+
+  const currentAmountInEuros = currencyFormatter.format(totalExpense);
   const progressAmount = `${currentAmountInEuros} / ${currencyFormatter.format(
     max
   )}`;
@@ -46,6 +52,7 @@ export default function BudgetCard({
             budgetCategory={budgetCategory}
             expenses={expenses}
             updateExpense={updateExpense}
+            totalExpense={totalExpense}
           />
         </HStack>
         {displayCurrentAmount && (
@@ -62,7 +69,7 @@ export default function BudgetCard({
               borderRadius="md"
               min={0}
               max={max}
-              value={currentAmount}
+              value={totalExpense}
               hasStripe
               isAnimated
             />
