@@ -64,7 +64,7 @@ export const BUDGET_CATEGORIES = [
   },
   {
     budgetCategory: "Investissement",
-    category: ["ETF"],
+    category: ["etf"],
     currentAmount: 400,
     max: 1000,
     displayCurrentAmount: false,

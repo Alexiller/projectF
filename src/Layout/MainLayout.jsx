@@ -39,12 +39,11 @@ function MainLayout() {
       {...budget}
       expenses={expenses.filter((expense) => {
         const expenseBudgetCategory = expense.budgetCategory.toLowerCase();
-
         const budgetCategory = budget.budgetCategory.toLowerCase();
 
-        // if (budgetExpenseCategory.includes(expenseCategory)) {
-        //   return budgetCategory;
-        // }
+        if (expense.category.includes(budget.category)) {
+          console.log("VRAI");
+        }
 
         return expenseBudgetCategory === budgetCategory;
       })} // plutôt que de tout envoyer ==> il faut filtrer
