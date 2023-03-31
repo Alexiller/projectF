@@ -27,8 +27,8 @@ export default function MonthSelect() {
     setDate((oldDate) => {
       const newMonth = shiftMonth(oldDate.month, -1);
       const newYear = pastYear(oldDate.month, oldDate.year);
+      console.log(oldDate, newMonth, newYear);
       return {
-        ...oldDate,
         month: newMonth,
         year: newYear,
       };
@@ -40,7 +40,6 @@ export default function MonthSelect() {
       const newMonth = shiftMonth(oldDate.month, 1);
       const newYear = nextYear(oldDate.month, oldDate.year);
       return {
-        ...oldDate,
         month: newMonth,
         year: newYear,
       };
@@ -60,8 +59,8 @@ export default function MonthSelect() {
         {MonthName} {date.year}
       </Heading>
       <Center>
-        <Button colorScheme="white" size="lg">
-          <ChevronRightIcon onClick={increaseMonth} boxSize={12} />
+        <Button onClick={increaseMonth} colorScheme="white" size="lg">
+          <ChevronRightIcon boxSize={12} />
         </Button>
       </Center>
     </Flex>

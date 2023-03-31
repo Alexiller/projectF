@@ -15,7 +15,6 @@ export default function ModalManageAmount({
   expenses,
   updateExpense,
   budgetCategory,
-  totalExpense,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);

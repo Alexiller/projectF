@@ -16,10 +16,7 @@ export default function BudgetCard({
   expenses,
   updateExpense,
   budgetCategory,
-  currentAmount,
-  max,
-  displayCurrentAmount,
-  displayProgressBar,
+  budget: { max, displayCurrentAmount, displayProgressBar },
   bgColor,
   colSpan,
   colStart,
@@ -38,10 +35,10 @@ export default function BudgetCard({
 
   return (
     <GridItem
-      colSpan="2"
-      colStart="8"
-      colEnd="2"
-      bgColor="purple.200"
+      colSpan={colSpan}
+      colStart={colStart}
+      colEnd={colEnd}
+      bgColor={bgColor}
       borderRadius="xl"
       p="3"
     >
@@ -65,7 +62,7 @@ export default function BudgetCard({
             <StatHelpText textAlign="right">{progressAmount}</StatHelpText>
             <Progress
               h="20"
-              colorScheme={getProgressBarVariant(currentAmount, max)}
+              colorScheme={getProgressBarVariant(totalExpense, max)}
               borderRadius="md"
               min={0}
               max={max}

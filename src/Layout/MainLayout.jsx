@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
-import { BUDGET_CATEGORIES } from "../models/budgetAndExpense";
+import { BUDGET_CATEGORIES, BUDGET_STYLE } from "../models/budgetAndExpense";
 import dummyExpenses from "/src/data/expenses.json";
 
 function MainLayout() {
@@ -23,39 +23,21 @@ function MainLayout() {
     setExpenses(formatedForm);
   };
 
-  const BudgetCardList = BUDGET_CATEGORIES.map((budget) => (
-    // <BudgetCard
-    //   {...budget}
-    //   expenses={expenses.filter(
-    //     (expense) =>
-    //       expense.budgetCategory.toLowerCase() ===
-    //       budget.budgetCategory.toLowerCase()
-    //   )} // plutôt que de tout envoyer ==> il faut filtrer
-    //   updateExpense={updateExpense}
-    //   colSpan="2"
-    // />
+  // filter --> true je garde / false je prends pas
 
+  // Global, Investissement etc.
+  const getExpenseByCategory = (id) => {
+    return expenses.filter((expense) =>
+      BUDGET_CATEGORIES[id].category.includes(expense.category)
+    );
+  };
+
+  const BudgetCardList = BUDGET_STYLE.map((style) => (
     <BudgetCard
-      {...budget}
-      expenses={expenses.filter((expense) => {
-        const expenseBudgetCategory = expense.budgetCategory.toLowerCase();
-        const budgetCategory = budget.budgetCategory.toLowerCase();
-
-        if (budget.category.includes(expense.category)) {
-          return (
-            budget.budgetCategory,
-            console.log(
-              expense.category,
-              "->",
-              budget.budgetCategory.toLowerCase()
-            )
-          );
-        }
-
-        return expenseBudgetCategory === budget.budgetCategory;
-      })} // plutôt que de tout envoyer ==> il faut filtrer
+      {...style}
+      budget={BUDGET_CATEGORIES[style.budgetCategory]}
+      expenses={getExpenseByCategory(style.budgetCategory)}
       updateExpense={updateExpense}
-      colSpan="2"
     />
   ));
 

@@ -12,12 +12,14 @@ export const EXPENSE_CATEGORY_LIST = [
   { value: "restaurationHotel", label: "Restauration / Hotel" },
   { value: "service", label: "Service" },
   { value: "sante", label: "Santé" },
+  { value: "etf", label: "ETF" },
   { value: "autres", label: "Autres" },
 ];
 
 export const BUDGET_STYLE = [
   {
-    budgetCategory: "Global",
+    budgetCategory: "GLOBAL",
+    label: "Général",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "purple.200",
@@ -26,7 +28,7 @@ export const BUDGET_STYLE = [
     colEnd: "8",
   },
   {
-    budgetCategory: "Investissement",
+    budgetCategory: "INVESTISSEMENT",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "blue.200",
@@ -35,7 +37,7 @@ export const BUDGET_STYLE = [
     colEnd: "",
   },
   {
-    budgetCategory: "Obligatoire",
+    budgetCategory: "OBLIGATOIRE",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "orange.200",
@@ -44,7 +46,7 @@ export const BUDGET_STYLE = [
     colEnd: "",
   },
   {
-    budgetCategory: "Loisir",
+    budgetCategory: "LOISIR",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "green.200",
@@ -54,9 +56,8 @@ export const BUDGET_STYLE = [
   },
 ];
 
-export const BUDGET_CATEGORIES = [
-  {
-    budgetCategory: "Global",
+export const BUDGET_CATEGORIES = {
+  GLOBAL: {
     currentAmount: 400,
     category: [
       "alimentation",
@@ -72,22 +73,21 @@ export const BUDGET_CATEGORIES = [
       "restaurationHotel",
       "service",
       "sante",
+      "etf",
       "autres",
     ],
     max: 1000,
     displayCurrentAmount: false,
     displayProgressBar: true,
   },
-  {
-    budgetCategory: "Investissement",
+  INVESTISSEMENT: {
     category: ["etf"],
     currentAmount: 400,
     max: 1000,
     displayCurrentAmount: false,
     displayProgressBar: true,
   },
-  {
-    budgetCategory: "Obligatoire",
+  OBLIGATOIRE: {
     category: [
       "alimentation",
       "sante",
@@ -100,19 +100,18 @@ export const BUDGET_CATEGORIES = [
     displayCurrentAmount: false,
     displayProgressBar: true,
   },
-  {
-    budgetCategory: "Loisir",
+  LOISIR: {
     category: [
       "cadeaux",
       "habillement",
       "sports",
       "restaurationHotel",
       "transports",
-      "jeux",
+      "loisir",
     ],
     currentAmount: 800,
     max: 1000,
     displayCurrentAmount: false,
     displayProgressBar: true,
   },
-];
+};
