@@ -41,11 +41,18 @@ function MainLayout() {
         const expenseBudgetCategory = expense.budgetCategory.toLowerCase();
         const budgetCategory = budget.budgetCategory.toLowerCase();
 
-        if (expense.category.includes(budget.category)) {
-          console.log("VRAI");
+        if (budget.category.includes(expense.category)) {
+          return (
+            budget.budgetCategory,
+            console.log(
+              expense.category,
+              "->",
+              budget.budgetCategory.toLowerCase()
+            )
+          );
         }
 
-        return expenseBudgetCategory === budgetCategory;
+        return expenseBudgetCategory === budget.budgetCategory;
       })} // plutôt que de tout envoyer ==> il faut filtrer
       updateExpense={updateExpense}
       colSpan="2"
