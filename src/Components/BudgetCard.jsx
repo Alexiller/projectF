@@ -16,22 +16,28 @@ export default function BudgetCard({
   expenses,
   updateExpense,
   budgetCategory,
-  budget: { max, displayCurrentAmount, displayProgressBar },
+  label,
   bgColor,
   colSpan,
   colStart,
   colEnd,
+  displayCurrentAmount,
+  displayProgressBar,
 }) {
   const totalExpense = expenses.reduce(
     (previousExpense, currentExpense) =>
       previousExpense + currentExpense.amount,
     0
   );
+  // temporaire
+  const max = 1000;
 
   const currentAmountInEuros = currencyFormatter.format(totalExpense);
   const progressAmount = `${currentAmountInEuros} / ${currencyFormatter.format(
     max
   )}`;
+
+  const progressBarColor = getProgressBarVariant(totalExpense, max);
 
   return (
     <GridItem
@@ -44,7 +50,7 @@ export default function BudgetCard({
     >
       <Stat>
         <HStack justifyContent={"space-between"}>
-          <Heading fontSize={20}>{budgetCategory}</Heading>
+          <Heading fontSize={20}>{label}</Heading>
           <ModalManageAmount
             budgetCategory={budgetCategory}
             expenses={expenses}
@@ -62,7 +68,7 @@ export default function BudgetCard({
             <StatHelpText textAlign="right">{progressAmount}</StatHelpText>
             <Progress
               h="20"
-              colorScheme={getProgressBarVariant(totalExpense, max)}
+              colorScheme={progressBarColor}
               borderRadius="md"
               min={0}
               max={max}

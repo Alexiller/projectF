@@ -29,6 +29,7 @@ export const BUDGET_STYLE = [
   },
   {
     budgetCategory: "INVESTISSEMENT",
+    label: "Investissement",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "blue.200",
@@ -38,6 +39,7 @@ export const BUDGET_STYLE = [
   },
   {
     budgetCategory: "OBLIGATOIRE",
+    label: "Obligatoire",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "orange.200",
@@ -47,6 +49,7 @@ export const BUDGET_STYLE = [
   },
   {
     budgetCategory: "LOISIR",
+    label: "Loisir",
     displayCurrentAmount: false,
     displayProgressBar: true,
     bgColor: "green.200",
@@ -58,7 +61,6 @@ export const BUDGET_STYLE = [
 
 export const BUDGET_CATEGORIES = {
   GLOBAL: {
-    currentAmount: 400,
     category: [
       "alimentation",
       "habillement",
@@ -76,16 +78,9 @@ export const BUDGET_CATEGORIES = {
       "etf",
       "autres",
     ],
-    max: 1000,
-    displayCurrentAmount: false,
-    displayProgressBar: true,
   },
   INVESTISSEMENT: {
     category: ["etf"],
-    currentAmount: 400,
-    max: 1000,
-    displayCurrentAmount: false,
-    displayProgressBar: true,
   },
   OBLIGATOIRE: {
     category: [
@@ -95,10 +90,6 @@ export const BUDGET_CATEGORIES = {
       "enfants",
       "impôts",
     ],
-    currentAmount: 200,
-    max: 1000,
-    displayCurrentAmount: false,
-    displayProgressBar: true,
   },
   LOISIR: {
     category: [
@@ -109,9 +100,5 @@ export const BUDGET_CATEGORIES = {
       "transports",
       "loisir",
     ],
-    currentAmount: 800,
-    max: 1000,
-    displayCurrentAmount: false,
-    displayProgressBar: true,
   },
 };
