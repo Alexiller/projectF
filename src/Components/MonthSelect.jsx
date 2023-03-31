@@ -1,52 +1,20 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Button, Center, Flex, Heading, Stack } from "@chakra-ui/react";
+import moment from "moment/moment";
 import React, { useState } from "react";
-import { getMonthName } from "../utils/utils";
-
-function shiftMonth(month, offset) {
-  return ((month - 1 + (offset % 12) + 12) % 12) + 1;
-}
-
-function pastYear(month, year) {
-  return month === 1 ? year - 1 : year;
-}
-
-function nextYear(month, year) {
-  return month === 12 ? year + 1 : year;
-}
 
 export default function MonthSelect() {
-  let monthValue = new Date().getMonth() + 1;
-
-  const [date, setDate] = useState({
-    month: monthValue,
-    year: 2023,
-  });
+  const [date, setDate] = useState(moment());
 
   const decreaseMonth = () => {
-    setDate((oldDate) => {
-      const newMonth = shiftMonth(oldDate.month, -1);
-      const newYear = pastYear(oldDate.month, oldDate.year);
-      console.log(oldDate, newMonth, newYear);
-      return {
-        month: newMonth,
-        year: newYear,
-      };
-    });
+    setDate((oldDate) => moment(oldDate).subtract(1, "month"));
   };
 
   const increaseMonth = () => {
-    setDate((oldDate) => {
-      const newMonth = shiftMonth(oldDate.month, 1);
-      const newYear = nextYear(oldDate.month, oldDate.year);
-      return {
-        month: newMonth,
-        year: newYear,
-      };
-    });
+    setDate((oldDate) => moment(oldDate).add(1, "month"));
   };
 
-  const MonthName = getMonthName(date.month);
+  const dateLabel = date.format("MMMM YYYY");
 
   return (
     <Flex justifyContent="space-between" color="white">
@@ -56,7 +24,7 @@ export default function MonthSelect() {
         </Button>
       </Center>
       <Heading textAlign="center" fontSize="50">
-        {MonthName} {date.year}
+        {dateLabel}
       </Heading>
       <Center>
         <Button onClick={increaseMonth} colorScheme="white" size="lg">

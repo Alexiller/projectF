@@ -5,7 +5,8 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
 import { BUDGET_CATEGORIES, BUDGET_STYLE } from "../models/budgetAndExpense";
-import dummyExpenses from "/src/data/expenses.json";
+import dummyExpenses from "../data/expenses.json";
+import { unionBy } from "lodash";
 
 function MainLayout() {
   // permanent, toutes les dépenses
@@ -20,7 +21,9 @@ function MainLayout() {
     }));
 
     // mise à jour des dépenses
-    setExpenses(formatedForm);
+    setExpenses((previousExpense) =>
+      unionBy(formatedForm, previousExpense, "id")
+    );
   };
 
   // filter --> true je garde / false je prends pas
