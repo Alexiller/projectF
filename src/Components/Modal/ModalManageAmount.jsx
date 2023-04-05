@@ -15,12 +15,14 @@ export default function ModalManageAmount({
   expenses,
   updateExpense,
   budgetCategory,
+  categoryList,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
   const handleToggle = () => setIsEditing(!isEditing);
 
   function handleSubmit(expensesForm) {
+    console.log(expensesForm);
     updateExpense(expensesForm);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
@@ -38,6 +40,7 @@ export default function ModalManageAmount({
               expenses={expenses}
               handleSubmit={handleSubmit}
               onClose={onClose}
+              categoryList={categoryList}
             />
           ) : (
             <ExpensesList

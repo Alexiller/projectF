@@ -4,7 +4,11 @@ import Footer from "./Footer";
 import { Grid, GridItem } from "@chakra-ui/react";
 import MonthSelect from "../Components/MonthSelect";
 import BudgetCard from "../Components/BudgetCard";
-import { BUDGET_CATEGORIES, BUDGET_STYLE } from "../models/budgetAndExpense";
+import {
+  BUDGET_CATEGORIES,
+  BUDGET_STYLE,
+  EXPENSE_CATEGORY_LIST,
+} from "../models/budgetAndExpense";
 import dummyExpenses from "../data/expenses.json";
 import { unionBy } from "lodash";
 
@@ -28,6 +32,12 @@ function MainLayout() {
 
   // filter --> true je garde / false je prends pas
 
+  const getCategoryExpense = (id) => {
+    return EXPENSE_CATEGORY_LIST.filter((expenseCategory) =>
+      BUDGET_CATEGORIES[id].category.includes(expenseCategory.value)
+    );
+  };
+
   // Global, Investissement etc.
   const getExpenseByCategory = (id) => {
     return expenses.filter((expense) =>
@@ -40,6 +50,7 @@ function MainLayout() {
       {...style}
       budget={BUDGET_CATEGORIES[style.budgetCategory]}
       expenses={getExpenseByCategory(style.budgetCategory)}
+      categoryList={getCategoryExpense(style.budgetCategory)}
       updateExpense={updateExpense}
     />
   ));

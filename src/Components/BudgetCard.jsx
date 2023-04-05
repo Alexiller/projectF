@@ -23,6 +23,7 @@ export default function BudgetCard({
   colEnd,
   displayCurrentAmount,
   displayProgressBar,
+  categoryList,
 }) {
   const totalExpense = expenses.reduce(
     (previousExpense, currentExpense) =>
@@ -38,7 +39,6 @@ export default function BudgetCard({
   )}`;
 
   const progressBarColor = getProgressBarVariant(totalExpense, max);
-
   return (
     <GridItem
       colSpan={colSpan}
@@ -56,6 +56,7 @@ export default function BudgetCard({
             expenses={expenses}
             updateExpense={updateExpense}
             totalExpense={totalExpense}
+            categoryList={categoryList}
           />
         </HStack>
         {displayCurrentAmount && (

@@ -14,11 +14,15 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { EXPENSE_CATEGORY_LIST } from "../../models/budgetAndExpense";
 import FooterModal from "./FooterModal";
 
-export default function EditListAmount({ expenses, onClose, handleSubmit }) {
-  const categoryLists = EXPENSE_CATEGORY_LIST.map((categoryList) => (
+export default function EditListAmount({
+  expenses,
+  onClose,
+  handleSubmit,
+  categoryList,
+}) {
+  const categoryLists = categoryList.map((categoryList) => (
     <option key={categoryList.value} value={categoryList.value}>
       {categoryList.label}
     </option>
@@ -36,6 +40,7 @@ export default function EditListAmount({ expenses, onClose, handleSubmit }) {
   // fonction permettant de modifier la ligne du formulaire
   function handleChange(e, id) {
     const { name: fieldName, value: fieldValue } = e.target;
+    console.log(fieldName, fieldValue);
     setExpensesForm((oldExpensesForm) => {
       // le map parcours chaque élément du tableau
       return oldExpensesForm.map((expense) => {
@@ -90,7 +95,6 @@ export default function EditListAmount({ expenses, onClose, handleSubmit }) {
                     <FormControl isRequired>
                       <Select
                         name="category"
-                        placeholder="Catégorie"
                         value={expense.category}
                         onChange={(e) => handleChange(e, expense.id)}
                       >
