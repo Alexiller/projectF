@@ -11,7 +11,7 @@ import {
 import React from "react";
 import FooterModal from "./FooterModal";
 
-export default function ShowListAmount({ expenses, handleToggle }) {
+export default function ShowListAmount({ expenses, onClose, handleToggle }) {
   return (
     <>
       <ModalBody>
@@ -36,7 +36,12 @@ export default function ShowListAmount({ expenses, handleToggle }) {
           </Table>
         </TableContainer>
       </ModalBody>
-      <FooterModal label="Editer" color="yellow" onClick={handleToggle} />
+      <FooterModal
+        label="Editer"
+        color="yellow"
+        onClick={handleToggle}
+        onClose={onClose}
+      />
     </>
   );
 }

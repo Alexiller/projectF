@@ -139,6 +139,7 @@ export default function EditListAmount({ expenses, handleSubmit }) {
       <FooterModal
         label="Valider"
         color="green"
+        onClose={onClose}
         onClick={() => handleSubmit(expensesForm)}
       />
     </>

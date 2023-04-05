@@ -1,9 +1,7 @@
 import { Button, ModalFooter } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 
-export default function FooterModal({ label, color, onClick }) {
-  const { onClose } = useDisclosure();
-
+export default function FooterModal({ label, color, onClick, onClose }) {
   return (
     <ModalFooter>
       <Button colorScheme={color} mr={3} onClick={onClick}>

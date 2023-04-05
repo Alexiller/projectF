@@ -38,7 +38,11 @@ export default function ModalManageAmount({
           {isEditing ? (
             <EditExpensesList expenses={expenses} handleSubmit={handleSubmit} />
           ) : (
-            <ExpensesList expenses={expenses} handleToggle={handleToggle} />
+            <ExpensesList
+              expenses={expenses}
+              handleToggle={handleToggle}
+              onClose={onClose}
+            />
           )}
         </ModalContent>
       </Modal>
