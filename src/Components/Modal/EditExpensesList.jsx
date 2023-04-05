@@ -72,7 +72,12 @@ export default function EditListAmount({
   // TODO : désactiver le bouton si plus qu'une ligne d'édition
   function deleteExpense(id) {
     setExpensesForm((oldExpensesForm) =>
-      oldExpensesForm.filter((expense) => expense.id != id)
+      oldExpensesForm.map((expense) => {
+        if (expense.id === id) {
+          return { ...expense, isDeleted: true };
+        }
+        return expense;
+      })
     );
   }
 
@@ -89,49 +94,51 @@ export default function EditListAmount({
               </Tr>
             </Thead>
             <Tbody>
-              {expensesForm.map((expense) => (
-                <Tr key={expense.id}>
-                  <Td>
-                    <FormControl isRequired>
-                      <Select
-                        name="category"
-                        value={expense.category}
-                        onChange={(e) => handleChange(e, expense.id)}
+              {expensesForm
+                .filter((expense) => !expense.isDeleted)
+                .map((expense) => (
+                  <Tr key={expense.id}>
+                    <Td>
+                      <FormControl isRequired>
+                        <Select
+                          name="category"
+                          value={expense.category}
+                          onChange={(e) => handleChange(e, expense.id)}
+                        >
+                          {categoryLists}
+                        </Select>
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <FormControl isRequired>
+                        <Input
+                          name="name"
+                          placeholder="Intitulé"
+                          value={expense.name}
+                          onChange={(e) => handleChange(e, expense.id)}
+                        />
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <FormControl isRequired>
+                        <Input
+                          name="amount"
+                          placeholder="Montant"
+                          value={expense.amount}
+                          onChange={(e) => handleChange(e, expense.id)}
+                        />
+                      </FormControl>
+                    </Td>
+                    <Td>
+                      <Button
+                        onClick={() => deleteExpense(expense.id)}
+                        colorScheme="red"
                       >
-                        {categoryLists}
-                      </Select>
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <FormControl isRequired>
-                      <Input
-                        name="name"
-                        placeholder="Intitulé"
-                        value={expense.name}
-                        onChange={(e) => handleChange(e, expense.id)}
-                      />
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <FormControl isRequired>
-                      <Input
-                        name="amount"
-                        placeholder="Montant"
-                        value={expense.amount}
-                        onChange={(e) => handleChange(e, expense.id)}
-                      />
-                    </FormControl>
-                  </Td>
-                  <Td>
-                    <Button
-                      onClick={() => deleteExpense(expense.id)}
-                      colorScheme="red"
-                    >
-                      <DeleteIcon />
-                    </Button>
-                  </Td>
-                </Tr>
-              ))}
+                        <DeleteIcon />
+                      </Button>
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </TableContainer>

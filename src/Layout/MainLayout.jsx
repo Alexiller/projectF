@@ -26,7 +26,9 @@ function MainLayout() {
 
     // mise à jour des dépenses
     setExpenses((previousExpense) =>
-      unionBy(formatedForm, previousExpense, "id")
+      unionBy(formatedForm, previousExpense, "id").filter(
+        (expense) => !expense.isDeleted
+      )
     );
   };
 

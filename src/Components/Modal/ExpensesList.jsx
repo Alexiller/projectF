@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import FooterModal from "./FooterModal";
+import { EXPENSE_CATEGORY_LIST } from "../../models/budgetAndExpense";
 
 export default function ShowListAmount({ expenses, onClose, handleToggle }) {
   return (
@@ -27,7 +28,13 @@ export default function ShowListAmount({ expenses, onClose, handleToggle }) {
             <Tbody>
               {expenses.map((expense) => (
                 <Tr key={expense.id}>
-                  <Td>{expense.label}</Td>
+                  <Td>
+                    {
+                      EXPENSE_CATEGORY_LIST.find(
+                        (category) => category.value === expense.category
+                      ).label
+                    }
+                  </Td>
                   <Td>{expense.name}</Td>
                   <Td>{expense.amount}</Td>
                 </Tr>

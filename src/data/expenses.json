@@ -2,28 +2,24 @@
   {
     "id": "0001",
     "category": "sante",
-    "label": "Santé",
     "name": "pharmacie",
     "amount": 69
   },
   {
     "id": "0002",
     "category": "loisir",
-    "label": "Loisir",
     "name": "Hunt ShowDown",
     "amount": 40
   },
   {
     "id": "0003",
     "category": "etf",
-    "label": "ETF",
     "name": "Cora",
     "amount": 50
   },
   {
     "id": "0004",
     "category": "etf",
-    "label": "ETF",
     "name": "test",
     "amount": 500
   }
