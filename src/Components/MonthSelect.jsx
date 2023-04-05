@@ -2,6 +2,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Button, Center, Flex, Heading, Stack } from "@chakra-ui/react";
 import moment from "moment/moment";
 import React, { useState } from "react";
+import { monthFrench } from "../models/month";
+
+moment.updateLocale("fr", {
+  months: monthFrench,
+});
 
 export default function MonthSelect() {
   const [date, setDate] = useState(moment());
