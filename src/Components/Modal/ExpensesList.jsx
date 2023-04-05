@@ -27,7 +27,7 @@ export default function ShowListAmount({ expenses, onClose, handleToggle }) {
             <Tbody>
               {expenses.map((expense) => (
                 <Tr key={expense.id}>
-                  <Td>{expense.category}</Td>
+                  <Td>{expense.label}</Td>
                   <Td>{expense.name}</Td>
                   <Td>{expense.amount}</Td>
                 </Tr>
