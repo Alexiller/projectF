@@ -17,7 +17,7 @@ import React, { useState } from "react";
 import { EXPENSE_CATEGORY_LIST } from "../../models/budgetAndExpense";
 import FooterModal from "./FooterModal";
 
-export default function EditListAmount({ expenses, handleSubmit }) {
+export default function EditListAmount({ expenses, onClose, handleSubmit }) {
   const categoryLists = EXPENSE_CATEGORY_LIST.map((categoryList) => (
     <option key={categoryList.value} value={categoryList.value}>
       {categoryList.label}

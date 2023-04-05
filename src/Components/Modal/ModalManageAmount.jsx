@@ -25,8 +25,6 @@ export default function ModalManageAmount({
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
 
-  // permet de faire le total d'un array avec la méthode reduce
-
   return (
     <>
       <EditIcon boxSize={"5"} onClick={onOpen} />
@@ -36,7 +34,11 @@ export default function ModalManageAmount({
           <ModalHeader>Dépenses {budgetCategory}</ModalHeader>
           <ModalCloseButton />
           {isEditing ? (
-            <EditExpensesList expenses={expenses} handleSubmit={handleSubmit} />
+            <EditExpensesList
+              expenses={expenses}
+              handleSubmit={handleSubmit}
+              onClose={onClose}
+            />
           ) : (
             <ExpensesList
               expenses={expenses}
