@@ -1,20 +1,17 @@
 import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
-  FormControl,
-  Input,
   ModalBody,
-  Select,
   Table,
   TableContainer,
   Tbody,
-  Td,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import FooterModal from "./FooterModal";
+import EditExpense from "./EditExpense";
 
 export default function EditListAmount({
   expenses,
@@ -22,12 +19,6 @@ export default function EditListAmount({
   handleSubmit,
   categoryList,
 }) {
-  const categoryLists = categoryList.map((categoryList) => (
-    <option key={categoryList.value} value={categoryList.value}>
-      {categoryList.label}
-    </option>
-  ));
-
   // vérifie si le expenses est vide, si vide alors ajout d'une ligne sinon return expenses
   const initialExpenses =
     expenses.length === 0
@@ -97,47 +88,12 @@ export default function EditListAmount({
               {expensesForm
                 .filter((expense) => !expense.isDeleted)
                 .map((expense) => (
-                  <Tr key={expense.id}>
-                    <Td>
-                      <FormControl isRequired>
-                        <Select
-                          name="category"
-                          value={expense.category}
-                          onChange={(e) => handleChange(e, expense.id)}
-                        >
-                          {categoryLists}
-                        </Select>
-                      </FormControl>
-                    </Td>
-                    <Td>
-                      <FormControl isRequired>
-                        <Input
-                          name="name"
-                          placeholder="Intitulé"
-                          value={expense.name}
-                          onChange={(e) => handleChange(e, expense.id)}
-                        />
-                      </FormControl>
-                    </Td>
-                    <Td>
-                      <FormControl isRequired>
-                        <Input
-                          name="amount"
-                          placeholder="Montant"
-                          value={expense.amount}
-                          onChange={(e) => handleChange(e, expense.id)}
-                        />
-                      </FormControl>
-                    </Td>
-                    <Td>
-                      <Button
-                        onClick={() => deleteExpense(expense.id)}
-                        colorScheme="red"
-                      >
-                        <DeleteIcon />
-                      </Button>
-                    </Td>
-                  </Tr>
+                  <EditExpense
+                    expense={expense}
+                    categoryList={categoryList}
+                    handleChange={handleChange}
+                    deleteExpense={deleteExpense}
+                  />
                 ))}
             </Tbody>
           </Table>
