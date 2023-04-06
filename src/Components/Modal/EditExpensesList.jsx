@@ -88,6 +88,7 @@ export default function EditListAmount({
                 .filter((expense) => !expense.isDeleted)
                 .map((expense) => (
                   <EditExpense
+                    key={expense.id}
                     expense={expense}
                     categoryList={categoryList}
                     handleChange={handleChange}

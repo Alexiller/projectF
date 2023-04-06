@@ -14,7 +14,7 @@ export default function EditExpense({
     </option>
   ));
   return (
-    <Tr key={expense.id}>
+    <Tr>
       <Td>
         <FormControl isRequired>
           <Select

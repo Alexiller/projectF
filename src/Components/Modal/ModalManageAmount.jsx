@@ -22,7 +22,6 @@ export default function ModalManageAmount({
   const handleToggle = () => setIsEditing(!isEditing);
 
   function handleSubmit(expensesForm) {
-    console.log(expensesForm);
     updateExpense(expensesForm);
     setIsEditing((oldIsEditing) => !oldIsEditing);
   }
