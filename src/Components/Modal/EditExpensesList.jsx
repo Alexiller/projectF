@@ -31,7 +31,6 @@ export default function EditListAmount({
   // fonction permettant de modifier la ligne du formulaire
   function handleChange(e, id) {
     const { name: fieldName, value: fieldValue } = e.target;
-    console.log(fieldName, fieldValue);
     setExpensesForm((oldExpensesForm) => {
       // le map parcours chaque élément du tableau
       return oldExpensesForm.map((expense) => {
