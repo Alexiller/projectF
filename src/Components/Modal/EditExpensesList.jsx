@@ -53,7 +53,7 @@ export default function EditListAmount({
       {
         id: Date.now(),
         category: "",
-        amount: undefined,
+        amount: 0,
         name: "",
       },
     ]);

@@ -47,9 +47,9 @@ function MainLayout() {
     );
   };
 
-  const BudgetCardList = BUDGET_STYLE.map((style, index) => (
+  const BudgetCardList = BUDGET_STYLE.map((style) => (
     <BudgetCard
-      key={index}
+      key={style.budgetCategory}
       {...style}
       budget={BUDGET_CATEGORIES[style.budgetCategory]}
       expenses={getExpenseByCategory(style.budgetCategory)}
