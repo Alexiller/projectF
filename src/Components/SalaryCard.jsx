@@ -1,15 +1,19 @@
 import {
-  Center,
   FormControl,
   GridItem,
   HStack,
   Heading,
   Input,
   Stat,
-  StatNumber,
 } from "@chakra-ui/react";
 
-export default function SalaryCard() {
+export default function SalaryCard({ salary, setSalary }) {
+  function handleChange(e) {
+    const { value } = e.target;
+    setSalary(value);
+    console.log(salary);
+  }
+
   return (
     <GridItem colStart="3" colEnd="7" borderRadius="xl" p="3" bg="yellow.300">
       <Stat>
@@ -23,6 +27,7 @@ export default function SalaryCard() {
               variant="flushed"
               name="salary"
               placeholder="Votre salaire"
+              onChange={(e) => handleChange(e)}
             />
           </FormControl>
         </HStack>

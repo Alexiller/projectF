@@ -16,6 +16,7 @@ import SalaryCard from "../Components/SalaryCard";
 function MainLayout() {
   // permanent, toutes les dépenses
   const [expenses, setExpenses] = useState(dummyExpenses);
+  const [salary, setSalary] = useState("");
 
   // wrapper qui formatte et met à jour les dépenses
   const updateExpense = (form) => {
@@ -51,6 +52,7 @@ function MainLayout() {
   const BudgetCardList = BUDGET_STYLE.map((style) => (
     <BudgetCard
       key={style.budgetCategory}
+      salary={salary}
       {...style}
       budget={BUDGET_CATEGORIES[style.budgetCategory]}
       expenses={getExpenseByCategory(style.budgetCategory)}
@@ -85,7 +87,7 @@ function MainLayout() {
           >
             <MonthSelect />
           </GridItem>
-          <SalaryCard />
+          <SalaryCard salary={salary} setSalary={setSalary} />
           {BudgetCardList}
         </Grid>
       </GridItem>

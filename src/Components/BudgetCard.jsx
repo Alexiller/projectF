@@ -25,6 +25,7 @@ export default function BudgetCard({
   displayCurrentAmount,
   displayProgressBar,
   categoryList,
+  salary,
 }) {
   const totalExpense = expenses.reduce(
     (previousExpense, currentExpense) =>
@@ -32,7 +33,7 @@ export default function BudgetCard({
     0
   );
   // temporaire
-  const max = 1000;
+  const max = salary;
 
   const currentAmountInEuros = currencyFormatter.format(totalExpense);
   const progressAmount = `${currentAmountInEuros} / ${currencyFormatter.format(
