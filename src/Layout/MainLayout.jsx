@@ -11,6 +11,7 @@ import {
 } from "../models/budgetAndExpense";
 import dummyExpenses from "../data/expenses.json";
 import { unionBy } from "lodash";
+import SalaryCard from "../Components/SalaryCard";
 
 function MainLayout() {
   // permanent, toutes les dépenses
@@ -68,6 +69,7 @@ function MainLayout() {
       h="100vh"
       gap="1"
       color="blackAlpha.700"
+      bgColor="gray.900"
     >
       <GridItem bg="orange.300" area="header">
         <Header />
@@ -75,15 +77,15 @@ function MainLayout() {
       <GridItem area="main">
         <Grid templateColumns="repeat(8, 1fr)" gap={1}>
           <GridItem
-            colSpan="4"
-            colStart="2"
-            colEnd="8"
+            colStart="3"
+            colEnd="7"
             borderRadius="xl"
             p="3"
             bg="red.300"
           >
             <MonthSelect />
           </GridItem>
+          <SalaryCard />
           {BudgetCardList}
         </Grid>
       </GridItem>
